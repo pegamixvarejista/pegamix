@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo Multimarcas — New Goods · BuppyPet · APS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F0;
+    --paper-raised:#FFFFFF;
+    --ink:#211C1B;
+    --ink-soft:#5B5450;
+    --red:#C11F30;
+    --red-dark:#7E0F1F;
+    --pink:#FBE2E4;
+    --pink-line:#F0C7CC;
+    --teal:#0E8C8C;
+    --teal-dark:#0A6666;
+    --teal-tint:#DFF3F1;
+    --teal-line:#B9E1DD;
+    --blue:#1D5FA8;
+    --blue-dark:#123E70;
+    --blue-tint:#E1EBF7;
+    --blue-line:#BBD1EC;
+    --sun:#DB8A17;
+    --sun-dark:#9C5E0A;
+    --sun-tint:#FBEBD4;
+    --sun-line:#F0D19C;
+    --line:#E4DFD4;
+    --focus:#1C6DD0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(33,28,27,0.05) 1px, transparent 0);
+    background-size:22px 22px;
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+
+  header.hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(120deg, var(--red) 0%, var(--red) 55%, var(--blue-dark) 100%);
+    color:#fff; padding:34px 24px 24px; border-bottom:6px solid var(--red-dark);
+  }
+  header.hero::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(60deg, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 26px),
+      repeating-linear-gradient(-60deg, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 26px);
+    opacity:0.5; pointer-events:none;
+  }
+  .hero-inner{position:relative; max-width:1220px; margin:0 auto;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    background:rgba(0,0,0,0.18); padding:5px 10px; border-radius:2px; margin-bottom:14px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#FFD54A;display:inline-block;}
+  h1.title{
+    font-family:'Archivo Black', sans-serif; font-weight:400;
+    font-size:clamp(26px, 4.4vw, 46px); line-height:1.02; margin:0 0 10px; letter-spacing:-0.01em;
+    text-shadow:2px 2px 0 rgba(0,0,0,0.15);
+  }
+  .subtitle{ font-size:14.5px; max-width:680px; color:rgba(255,255,255,0.92); margin:0; line-height:1.5;}
+  .meta-strip{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+  .meta-chip{ font-family:'IBM Plex Mono',monospace; font-size:12px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.3); padding:6px 11px; border-radius:2px;}
+
+  .controls{ position:sticky; top:0; z-index:20; background:var(--paper-raised); border-bottom:1px solid var(--line); box-shadow:0 2px 10px rgba(0,0,0,0.04);}
+  .controls-inner{ max-width:1220px; margin:0 auto; padding:14px 24px; display:flex; flex-direction:column; gap:12px;}
+  .row{ display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+  .brand-tabs{ display:flex; flex-wrap:wrap; gap:8px;}
+  .brand-tab{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; padding:8px 14px; border-radius:2px; cursor:pointer;
+    border:1.5px solid var(--line); background:var(--paper); color:var(--ink-soft); transition:all .12s; white-space:nowrap;
+  }
+  .brand-tab:hover{ border-color:var(--ink); color:var(--ink);}
+  .brand-tab.active{ background:var(--ink); border-color:var(--ink); color:#fff;}
+  .search-wrap{ position:relative; flex:1 1 260px; min-width:200px;}
+  .search-wrap svg{ position:absolute; left:12px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--ink-soft);}
+  #searchInput{
+    width:100%; padding:11px 14px 11px 36px; border:1.5px solid var(--line); border-radius:2px;
+    font-family:'Inter',sans-serif; font-size:14.5px; background:var(--paper); color:var(--ink); transition:border-color .15s;
+  }
+  #searchInput:focus{ outline:none; border-color:var(--red); background:#fff;}
+  .chips{ display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; padding:7px 12px; border:1.5px solid var(--line);
+    background:var(--paper); border-radius:2px; cursor:pointer; color:var(--ink-soft); transition:all .12s; white-space:nowrap;
+  }
+  .chip:hover{ border-color:var(--red); color:var(--red);}
+  .chip.active{ background:var(--ink); border-color:var(--ink); color:#fff;}
+  .toggle-wrap{ display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft); cursor:pointer; user-select:none;}
+  .toggle-wrap input{ accent-color: var(--red); width:15px; height:15px; cursor:pointer;}
+  .clear-btn{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; background:transparent; border:none; color:var(--red); text-decoration:underline; cursor:pointer; padding:6px 4px; display:none;}
+  .chip:focus-visible, button:focus-visible, .card:focus-visible, .brand-tab:focus-visible{ outline:3px solid var(--focus); outline-offset:2px;}
+
+  .result-count{ max-width:1220px; margin:14px auto 0; padding:0 24px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);}
+  .result-count b{ color:var(--ink);}
+
+  main{ max-width:1220px; margin:0 auto; padding:18px 24px 40px;}
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(225px, 1fr)); gap:18px; margin-top:16px;}
+
+  .card{
+    position:relative; background:var(--paper-raised); border:1.5px solid var(--line); border-radius:3px;
+    padding:22px 15px 15px; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    display:flex; flex-direction:column; animation:fadeIn .25s ease both;
+  }
+  @keyframes fadeIn{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+  .card:hover{ transform:translateY(-3px); box-shadow:0 10px 24px rgba(33,28,27,0.1);}
+  .card.brand-novidades:hover{ border-color:var(--red);}
+  .card.brand-buppy:hover{ border-color:var(--teal);}
+  .card.brand-aps:hover{ border-color:var(--blue);}
+  .card.brand-bestway:hover{ border-color:var(--sun);}
+  .tag-hole{ position:absolute; top:10px; left:50%; transform:translateX(-50%); width:14px; height:14px; border-radius:50%; background:var(--paper); border:1.5px solid var(--line);}
+
+  .brand-flag{
+    position:absolute; top:8px; left:8px; font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.04em;
+    text-transform:uppercase; padding:3px 6px; border-radius:2px; color:#fff;
+  }
+  .brand-flag.brand-novidades{ background:var(--red);}
+  .brand-flag.brand-buppy{ background:var(--teal);}
+  .brand-flag.brand-aps{ background:var(--blue);}
+  .brand-flag.brand-bestway{ background:var(--sun);}
+
+  .discount-badge{
+    position:absolute; top:-10px; right:-10px; background:var(--red); color:#fff; font-family:'Archivo Black',sans-serif;
+    font-size:11px; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    text-align:center; line-height:1.05; transform:rotate(10deg); box-shadow:0 3px 8px rgba(193,31,48,0.4); border:2px solid #fff;
+  }
+  .soon-badge{
+    position:absolute; top:-9px; right:-9px; background:#C98A2A; color:#fff; font-family:'IBM Plex Mono',monospace;
+    font-size:9px; letter-spacing:0.03em; padding:5px 8px; border-radius:12px; box-shadow:0 3px 8px rgba(201,138,42,0.4); border:2px solid #fff; white-space:nowrap;
+  }
+  .ipi-badge{
+    position:absolute; top:-9px; right:-9px; background:var(--sun); color:#fff; font-family:'IBM Plex Mono',monospace;
+    font-size:9px; letter-spacing:0.02em; padding:5px 8px; border-radius:12px; box-shadow:0 3px 8px rgba(219,138,23,0.4); border:2px solid #fff; white-space:nowrap;
+  }
+
+  .icon-badge{ width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:6px auto 12px;}
+  .icon-badge svg{ width:27px; height:27px;}
+  .brand-novidades .icon-badge{ background:var(--pink); border:1px solid var(--pink-line); color:var(--red);}
+  .brand-buppy .icon-badge{ background:var(--teal-tint); border:1px solid var(--teal-line); color:var(--teal-dark);}
+  .brand-aps .icon-badge{ background:var(--blue-tint); border:1px solid var(--blue-line); color:var(--blue-dark);}
+  .brand-bestway .icon-badge{ background:var(--sun-tint); border:1px solid var(--sun-line); color:var(--sun-dark);}
+
+  .card-cat{ font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; color:var(--ink-soft); text-align:center; margin-bottom:5px;}
+  .card-name{ font-size:13.5px; font-weight:700; text-align:center; line-height:1.3; min-height:36px; margin-bottom:9px; color:var(--ink);}
+  .card-ref{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft); text-align:center; margin-bottom:9px;}
+  .card-specs{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:7px; margin-bottom:9px; display:flex; justify-content:space-between; gap:6px;}
+
+  .card-price{ margin-top:auto; background:var(--pink); border:1px solid var(--pink-line); border-radius:2px; padding:9px 10px; text-align:center;}
+  .price-original{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft); text-decoration:line-through; display:block;}
+  .price-final{ font-family:'Archivo Black',sans-serif; font-size:20px; color:var(--red-dark); display:block; line-height:1.15;}
+  .price-note{ font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--ink-soft); letter-spacing:0.03em;}
+
+  .card-price-ipi{ margin-top:auto; background:var(--sun-tint); border:1px solid var(--sun-line); border-radius:2px; padding:9px 10px; text-align:center;}
+  .card-price-ipi .price-original{ text-decoration:none;}
+  .card-price-ipi .price-final{ color:var(--sun-dark);}
+
+  .card-stock{ margin-top:auto; border-radius:2px; padding:9px 10px; text-align:center; border:1px solid;}
+  .brand-buppy .card-stock{ background:var(--teal-tint); border-color:var(--teal-line);}
+  .brand-aps .card-stock{ background:var(--blue-tint); border-color:var(--blue-line);}
+  .stock-num{ font-family:'Archivo Black',sans-serif; font-size:19px; display:block; line-height:1.15;}
+  .brand-buppy .stock-num{ color:var(--teal-dark);}
+  .brand-aps .stock-num{ color:var(--blue-dark);}
+  .stock-note{ font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--ink-soft); letter-spacing:0.03em;}
+  .stock-future{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#C98A2A; margin-top:3px; display:block;}
+
+  .empty-state{ grid-column:1/-1; text-align:center; padding:70px 20px; color:var(--ink-soft);}
+  .empty-state svg{ width:52px; height:52px; margin-bottom:14px; color:var(--line);}
+  .empty-state h3{ font-family:'Archivo Black',sans-serif; font-weight:400; font-size:20px; color:var(--ink); margin:0 0 6px;}
+  .empty-state button{ margin-top:16px; font-family:'IBM Plex Mono',monospace; font-size:13px; background:var(--ink); color:#fff; border:none; padding:10px 18px; border-radius:2px; cursor:pointer;}
+
+  .load-more-wrap{ text-align:center; margin-top:28px;}
+  #loadMoreBtn{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; background:var(--ink); color:#fff; border:none;
+    padding:12px 26px; border-radius:2px; cursor:pointer;
+  }
+  #loadMoreBtn:hover{ background:var(--red);}
+
+  .overlay{ position:fixed; inset:0; background:rgba(20,16,15,0.55); display:none; align-items:center; justify-content:center; padding:24px; z-index:100; animation:overlayIn .15s ease;}
+  @keyframes overlayIn{from{opacity:0;} to{opacity:1;}}
+  .overlay.open{ display:flex;}
+  .modal{ background:var(--paper-raised); max-width:480px; width:100%; max-height:88vh; overflow-y:auto; border-radius:4px; position:relative; padding:34px 26px 26px; box-shadow:0 30px 60px rgba(0,0,0,0.3);}
+  .modal .tag-hole{ top:14px;}
+  .modal-close{ position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:50%; border:1.5px solid var(--line); background:var(--paper); cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--ink); font-size:16px; line-height:1;}
+  .modal-close:hover{ border-color:var(--red); color:var(--red);}
+  .modal .icon-badge{ width:78px; height:78px;}
+  .modal .icon-badge svg{ width:38px; height:38px;}
+  .modal-brand{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; text-align:center; margin-bottom:2px; font-weight:600;}
+  .modal.brand-novidades .modal-brand{ color:var(--red);}
+  .modal.brand-buppy .modal-brand{ color:var(--teal-dark);}
+  .modal.brand-aps .modal-brand{ color:var(--blue-dark);}
+  .modal.brand-bestway .modal-brand{ color:var(--sun-dark);}
+  .modal-cat{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); text-align:center; margin-bottom:8px;}
+  .modal-name{ font-family:'Archivo Black',sans-serif; font-weight:400; font-size:21px; line-height:1.2; text-align:center; margin:0 0 6px;}
+  .modal-ref{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft); text-align:center; margin-bottom:18px;}
+  .modal-price-block{ background:var(--pink); border:1px solid var(--pink-line); border-radius:3px; padding:16px; text-align:center; margin-bottom:18px; position:relative;}
+  .modal-price-block .discount-badge{ top:-14px; right:12px;}
+  .modal-price-block .price-original{ font-size:14px;}
+  .modal-price-block .price-final{ font-size:30px;}
+  .modal-stock-block{ border-radius:3px; padding:16px; text-align:center; margin-bottom:18px; border:1px solid;}
+  .modal.brand-buppy .modal-stock-block{ background:var(--teal-tint); border-color:var(--teal-line);}
+  .modal.brand-aps .modal-stock-block{ background:var(--blue-tint); border-color:var(--blue-line);}
+  .modal-stock-block .stock-num{ font-size:28px;}
+  .modal-price-ipi-block{ background:var(--sun-tint); border:1px solid var(--sun-line); border-radius:3px; padding:16px; text-align:center; margin-bottom:18px; position:relative;}
+  .modal-price-ipi-block .ipi-badge{ top:-14px; right:12px;}
+  .modal-price-ipi-block .price-original{ font-size:14px; text-decoration:none;}
+  .modal-price-ipi-block .price-final{ font-size:30px; color:var(--sun-dark);}
+  .modal-specs{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:6px;}
+  .spec-item{ border:1px solid var(--line); border-radius:2px; padding:10px 12px;}
+  .spec-label{ font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px;}
+  .spec-value{ font-size:14px; font-weight:600; color:var(--ink);}
+  .modal-note{ margin-top:16px; font-size:12px; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:12px; line-height:1.5;}
+
+  footer{ text-align:center; padding:30px 20px 50px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); line-height:1.6;}
+
+  @media (max-width:640px){
+    .grid{ grid-template-columns:repeat(auto-fill, minmax(148px,1fr)); gap:12px;}
+    .card{ padding:18px 10px 12px;}
+    .card-name{ font-size:12.5px; min-height:32px;}
+    .price-final, .stock-num{ font-size:17px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span> Catálogo consolidado de fornecedores</div>
+    <h1 class="title">CATÁLOGO<br>MULTIMARCAS</h1>
+    <p class="subtitle">Consulta unificada dos catálogos <b>New Goods (Novidades Brinquedos)</b>, <b>BuppyPet</b>, <b>APS Toys&amp;Toys</b> e <b>Bestway/Westwave</b> — preços onde disponíveis, estoque e caixa fechada para os demais.</p>
+    <div class="meta-strip">
+      <span class="meta-chip" id="totalCountChip">— itens no catálogo</span>
+      <span class="meta-chip">New Goods: 23/07/2026 · -35% OFF</span>
+      <span class="meta-chip">BuppyPet e APS: 20/07/2026</span>
+      <span class="meta-chip">Bestway/Westwave: 13/07/2026 · preço + IPI</span>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="row brand-tabs" id="brandTabs"></div>
+    <div class="row">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="searchInput" type="text" placeholder="Buscar por nome ou código..." autocomplete="off">
+      </div>
+      <label class="toggle-wrap">
+        <input type="checkbox" id="hideSoonToggle">
+        Ocultar itens futuros (ainda não disponíveis)
+      </label>
+      <button class="clear-btn" id="clearBtn">Limpar filtros</button>
+    </div>
+    <div class="row chips" id="categoryChips"></div>
+  </div>
+</div>
+
+<div class="result-count" id="resultCount"></div>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+    <button id="loadMoreBtn">Carregar mais</button>
+  </div>
+</main>
+
+<footer>Catálogo gerado a partir dos dados extraídos diretamente dos PDFs de origem: "CATALOGO NOVIDADES BRINQUEDOS –35% 23-07-2026" (New Goods), "Catálogo Buppy 20/07/2026" (BuppyPet), "Catálogo APS 20/07/2026" (APS Toys&amp;Toys) e "Disponível — Bestway e Westwave 13/07/2026".<br>
+Itens marcados "Em breve" constam no catálogo de origem como estoque futuro (ainda não disponível para pronta entrega). Preços da Bestway/Westwave já incluem o IPI de cada item.</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modalContent" role="dialog" aria-modal="true"></div>
+</div>
+
+<script>
+/* ============ ICONS (category-representative, not real product photos) ============ */
+const ICONS = {
+  'Ping-Pong': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="17" cy="7" r="2.4"/><path d="M4 20 L13 11"/><ellipse cx="8" cy="16" rx="5.2" ry="3.6" transform="rotate(-45 8 16)"/></svg>`,
+  'Lousa Branca': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M9 20h6M12 17v3"/><path d="M7 9l3 3 4-5" stroke-width="1.6"/></svg>`,
+  'Lousa Mágica': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M8 20h2M14 20h2"/><path d="M8 8c2 2 6-2 8 0" stroke-width="1.6"/><circle cx="19" cy="16" r="1.4" fill="currentColor" stroke="none"/></svg>`,
+  'Quebra-Cabeça': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h6v2.2a1.8 1.8 0 1 1 0 3.6V12H4V4z"/><path d="M10 4h6v6h2.2a1.8 1.8 0 1 1 0 3.6H16V20h-6v-6H7.8a1.8 1.8 0 1 1 0-3.6H10V4z"/></svg>`,
+  'Tapete Educativo': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`,
+  'Tapetes Infantis': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M2.5 10h19M2.5 14h19M8 6v12M16 6v12"/></svg>`,
+  'Comedouros e Bebedouros': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11a8 8 0 0 0 16 0z"/><ellipse cx="12" cy="11" rx="8" ry="3"/></svg>`,
+  'Coleiras e Guias': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="5"/><path d="M12 13v7M9 20h6"/></svg>`,
+  'Higiene e Escovação': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="2" width="6" height="9" rx="1"/><path d="M9 11l-3 11h12l-3-11"/></svg>`,
+  'Roupas para Pet': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 4l4 2 4-2 3 4-3 2v10H8V10L5 8z"/></svg>`,
+  'Brinquedos para Gatos': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="6" r="1.4" fill="currentColor" stroke="none"/><circle cx="16" cy="6" r="1.4" fill="currentColor" stroke="none"/><circle cx="4.5" cy="10" r="1.4" fill="currentColor" stroke="none"/><circle cx="19.5" cy="10" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="13" r="2" fill="currentColor" stroke="none"/></svg>`,
+  'Brinquedos para Cães': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="14" r="3.2"/><circle cx="6" cy="8" r="1.8"/><circle cx="18" cy="8" r="1.8"/><circle cx="9" cy="5" r="1.5"/><circle cx="15" cy="5" r="1.5"/></svg>`,
+  'Passeio e Higiene': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="5"/><path d="M12 13v7"/></svg>`,
+  'Piscina e Praia': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12c2 2 4 2 6 0s4-2 6 0 4 2 6 0"/><path d="M2 17c2 2 4 2 6 0s4-2 6 0 4 2 6 0"/><circle cx="12" cy="6" r="3"/></svg>`,
+  'Bonecas': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="5" r="3"/><path d="M7 21l1-8a4 4 0 0 1 8 0l1 8"/></svg>`,
+  'Bonecos e Action Figures': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="5" r="2.6"/><path d="M12 8v6M8 11h8M8 20l4-6 4 6"/></svg>`,
+  'Dinossauros': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18c1-6 4-11 10-11 3 0 5 2 5 4-1 0-2 1-2 2 2 0 3 1 3 3-2 0-3-1-4-1l-1 4H9l-1-3c-1 1-2 2-4 2z"/><circle cx="15" cy="9" r="0.8" fill="currentColor" stroke="none"/></svg>`,
+  'Controle Remoto': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="8" width="7" height="12" rx="2"/><circle cx="7.5" cy="12" r="1.3" fill="currentColor" stroke="none"/><path d="M7.5 15v3"/><path d="M14 6l3-3M17 6l3-3M14 4l6 4"/></svg>`,
+  'Carrinhos e Veículos': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16V12l2-4h10l3 4h1v4"/><circle cx="8" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></svg>`,
+  'Armas de Brinquedo': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 14h9l2-3h5l-1 3h1v3H8l-2 2H3z"/></svg>`,
+  'Bolhas e Água': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="9" r="4"/><circle cx="16" cy="15" r="3"/><circle cx="6" cy="17" r="1.6"/></svg>`,
+  'Cozinha e Casinha': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11a8 8 0 0 0 16 0z"/><path d="M6 11V6M18 11V6M9 6V4M15 6V4"/></svg>`,
+  'Instrumentos e Sons': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="18" r="2.5"/><path d="M9.5 18V5l9-2v13"/><circle cx="16.5" cy="16" r="2.5"/></svg>`,
+  'Moda e Beleza': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><circle cx="18" cy="18" r="1.7"/></svg>`,
+  'Blocos de Montar': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="10" width="7" height="7"/><rect x="10" y="10" width="7" height="7"/><rect x="6.5" y="4" width="4" height="6"/><rect x="13.5" y="4" width="4" height="6"/></svg>`,
+  'Jogos e Diversão': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="9" cy="15" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.1" fill="currentColor" stroke="none"/></svg>`,
+  'Esportes': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg>`,
+  'Animais de Brinquedo': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="13" r="5"/><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/></svg>`,
+  'Fantasia e Festa': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16L14 5l-4 6-3-2z"/><circle cx="14" cy="5" r="1" fill="currentColor" stroke="none"/></svg>`,
+  'Massinha de Modelar': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="10" r="4"/><circle cx="15" cy="14" r="4.5"/></svg>`,
+  'Militar e Ação': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z"/></svg>`,
+  'Ferramentas e Construção': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 7a3 3 0 1 0 4 4L21 8l-3-3zM4 20l7-7"/></svg>`,
+  'Arte e Desenho': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20l1-4 11-11 3 3-11 11z"/><path d="M15 5l3 3"/></svg>`,
+  'Diversos': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M4 8l8-4 8 4"/></svg>`
+};
+const DEFAULT_ICON = ICONS['Diversos'];
+
+const BRAND_LABELS = {
+  novidades: 'New Goods',
+  buppy: 'BuppyPet',
+  aps: 'APS Toys&Toys',
+  bestway: 'Bestway/Westwave'
+};
+
+/* ============ PRODUCT DATA ============ */
+const productsNovidades = [
+  {code:"BA-11826", name:"Kit Ping-Pong com 2 Raquetes e 3 Bolas", category:"Ping-Pong", dims:"29 x 18,5 cm", boxQty:50, priceOriginal:"R$ 7,00", priceFinal:"R$ 4,55"},
+  {code:"BA-11827", name:"Kit Ping-Pong com 2 Raquetes, 3 Bolas e Suporte para Rede", category:"Ping-Pong", dims:"29 x 18,5 cm", boxQty:50, priceOriginal:"R$ 11,00", priceFinal:"R$ 7,15"},
+
+  {code:"BA-11086", name:"Lousa Branca — Cores Sortidas", category:"Lousa Branca", dims:"15 x 20 cm", boxQty:288, priceOriginal:"R$ 2,20", priceFinal:"R$ 1,43"},
+  {code:"BA-11087", name:"Lousa Branca — Cores Sortidas", category:"Lousa Branca", dims:"20 x 30 cm", boxQty:168, priceOriginal:"R$ 3,30", priceFinal:"R$ 2,15"},
+  {code:"BA-11090", name:"Lousa Branca — Cores Sortidas", category:"Lousa Branca", dims:"25 x 35 cm", boxQty:144, priceOriginal:"R$ 3,75", priceFinal:"R$ 2,44"},
+  {code:"BA-03051", name:"Lousa Branca — Cores e Modelos Sortidos", category:"Lousa Branca", dims:"29,5 x 34 cm", boxQty:120, priceOriginal:"R$ 8,25", priceFinal:"R$ 5,36"},
+  {code:"BA-11091", name:"Lousa Branca — Cores Sortidas", category:"Lousa Branca", dims:"30 x 40 cm", boxQty:120, priceOriginal:"R$ 5,00", priceFinal:"R$ 3,25"},
+  {code:"BA-03050", name:"Lousa Branca — Cores Sortidas", category:"Lousa Branca", dims:"31,5 x 20 cm", boxQty:168, priceOriginal:"R$ 3,50", priceFinal:"R$ 2,27"},
+  {code:"BA-11092", name:"Lousa Branca — Cores Sortidas", category:"Lousa Branca", dims:"35 x 50 cm", boxQty:96, priceOriginal:"R$ 7,00", priceFinal:"R$ 4,55"},
+  {code:"BA-12593", name:"Lousa Branca e Labirinto com Ímã — Cores Sortidas", category:"Lousa Branca", dims:"28 x 36 cm", boxQty:96, priceOriginal:"R$ 10,00", priceFinal:"R$ 6,50"},
+
+  {code:"BA-12594", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"11 x 16 cm", boxQty:360, priceOriginal:"R$ 2,20", priceFinal:"R$ 1,43"},
+  {code:"BA-03052", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"17 x 17,5 cm", boxQty:300, priceOriginal:"R$ 2,30", priceFinal:"R$ 1,49"},
+  {code:"BA-11098", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"20 x 23 cm", boxQty:144, priceOriginal:"R$ 4,40", priceFinal:"R$ 2,86"},
+  {code:"BA-11099", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"21,5 x 26,5 cm", boxQty:144, priceOriginal:"R$ 5,50", priceFinal:"R$ 3,58"},
+  {code:"BA-11103", name:"Lousa Mágica — Modelos Sortidos", category:"Lousa Mágica", dims:"21 x 30 cm", boxQty:96, priceOriginal:"R$ 8,20", priceFinal:"R$ 5,33"},
+  {code:"BA-11104", name:"Lousa Mágica — Modelos Sortidos", category:"Lousa Mágica", dims:"22 x 31 cm", boxQty:96, priceOriginal:"R$ 8,20", priceFinal:"R$ 5,33"},
+  {code:"BA-11106", name:"Lousa Mágica — Modelos Sortidos", category:"Lousa Mágica", dims:"23 x 33 cm", boxQty:72, priceOriginal:"R$ 10,00", priceFinal:"R$ 6,50"},
+  {code:"BA-03053", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"25,5 x 30,5 cm", boxQty:96, priceOriginal:"R$ 6,00", priceFinal:"R$ 3,90"},
+  {code:"BA-03055", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"26,5 x 34 cm", boxQty:96, priceOriginal:"R$ 8,00", priceFinal:"R$ 5,20"},
+  {code:"BA-12595", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"26 x 36 cm", boxQty:60, priceOriginal:"R$ 11,00", priceFinal:"R$ 7,15"},
+  {code:"BA-03054", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"27,5 x 31 cm", boxQty:96, priceOriginal:"R$ 7,50", priceFinal:"R$ 4,88"},
+  {code:"BA-12596", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"27 x 29 cm", boxQty:60, priceOriginal:"R$ 13,00", priceFinal:"R$ 8,45"},
+  {code:"BA-03057", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"32 x 36,5 cm", boxQty:60, priceOriginal:"R$ 11,00", priceFinal:"R$ 7,15"},
+  {code:"BA-03056", name:"Lousa Mágica — Cores Sortidas", category:"Lousa Mágica", dims:"32 x 36 cm", boxQty:60, priceOriginal:"R$ 11,00", priceFinal:"R$ 7,15"},
+
+  {code:"BA-03010", name:"Quebra-Cabeça de Madeira com 25 Peças — Modelos Sortidos", category:"Quebra-Cabeça", dims:"18 x 18 cm", boxQty:100, priceOriginal:"R$ 4,50", priceFinal:"R$ 2,93"},
+  {code:"BA-03017", name:"Quebra-Cabeça de Madeira com 26 Peças — Tamanhos e Modelos Sortidos", category:"Quebra-Cabeça", dims:"Sortido", boxQty:72, priceOriginal:"R$ 9,90", priceFinal:"R$ 6,44"},
+  {code:"BA-03064", name:"Quebra-Cabeça de Madeira com 26 Peças — Tamanhos e Modelos Sortidos", category:"Quebra-Cabeça", dims:"Sortido", boxQty:72, priceOriginal:"R$ 9,90", priceFinal:"R$ 6,44"},
+  {code:"BA-03065", name:"Quebra-Cabeça de Madeira com 26 Peças — Tamanhos e Modelos Sortidos", category:"Quebra-Cabeça", dims:"Sortido", boxQty:72, priceOriginal:"R$ 9,90", priceFinal:"R$ 6,44"},
+  {code:"BA-03005", name:"Quebra-Cabeça de Madeira com 40 Peças", category:"Quebra-Cabeça", dims:"27 x 17,5 cm", boxQty:100, priceOriginal:"R$ 4,00", priceFinal:"R$ 2,60"},
+  {code:"BA-03059", name:"Quebra-Cabeça de Madeira com 60 Peças — Modelos Sortidos", category:"Quebra-Cabeça", dims:"22,5 x 30 cm", boxQty:100, priceOriginal:"R$ 5,00", priceFinal:"R$ 3,25"},
+
+  {code:"BA-17697", name:"Tapete Educativo — Cores Sortidas", category:"Tapete Educativo", dims:"17 x 13 cm", boxQty:196, priceOriginal:"R$ 1,50", priceFinal:"R$ 0,98"},
+  {code:"BA-17696", name:"Tapete Educativo — Cores Sortidas", category:"Tapete Educativo", dims:"11 x 15 cm", boxQty:240, priceOriginal:"R$ 1,25", priceFinal:"R$ 0,81"},
+  {code:"BA-17699", name:"Tapete Educativo — Cores Sortidas", category:"Tapete Educativo", dims:"25 x 17 cm", boxQty:80, priceOriginal:"R$ 5,75", priceFinal:"R$ 3,74"},
+  {code:"BA-17708", name:"Tapete Educativo — Estampas e Cores Sortidas (cada placa)", category:"Tapete Educativo", dims:"29 x 29 cm", boxQty:12, priceOriginal:"R$ 17,00", priceFinal:"R$ 11,05"},
+  {code:"BA-17700", name:"Tapete Educativo — Estampas e Cores Sortidas (cada placa)", category:"Tapete Educativo", dims:"33 x 22,5 cm", boxQty:60, priceOriginal:"R$ 9,00", priceFinal:"R$ 5,85"},
+  {code:"BA-17701", name:"Tapete Educativo — Cores Sortidas", category:"Tapete Educativo", dims:"38 x 26 cm", boxQty:22, priceOriginal:"R$ 12,00", priceFinal:"R$ 7,80"},
+  {code:"BA-11588", name:"Tapete Educativo — Estampas Sortidas (cada placa)", category:"Tapete Educativo", dims:"60 x 60 cm", boxQty:15, priceOriginal:"R$ 40,00", priceFinal:"R$ 26,00"},
+  {code:"BA-17698", name:"Tapete Educativo — Cores Sortidas (placa)", category:"Tapete Educativo", dims:"20 x 26 cm", boxQty:144, priceOriginal:"R$ 3,30", priceFinal:"R$ 2,15"},
+
+  {code:"BA-19290", name:"Tapete EVA — Cores Sortidas", category:"Tapetes Infantis", dims:"60 x 60 cm", boxQty:15, priceOriginal:"R$ 26,00", priceFinal:"R$ 16,90"},
+  {code:"BA-25365", name:"Tapete Infantil — Estampas Sortidas", category:"Tapetes Infantis", dims:"1,80 x 1,20 m", boxQty:50, priceOriginal:"R$ 14,00", priceFinal:"R$ 9,10"},
+  {code:"BA-01667", name:"Tapete Infantil de Encaixar", category:"Tapetes Infantis", dims:"30,5 x 30,5 cm (comp. 9 cm)", boxQty:12, priceOriginal:"R$ 23,00", priceFinal:"R$ 14,95"},
+  {code:"BA-01668", name:"Tapete Infantil de Encaixar", category:"Tapetes Infantis", dims:"30,5 x 30,5 cm (comp. 9 cm)", boxQty:12, priceOriginal:"R$ 23,00", priceFinal:"R$ 14,95"},
+  {code:"BA-01670", name:"Tapete Infantil de Encaixar", category:"Tapetes Infantis", dims:"30,5 x 30,5 cm (comp. 9 cm)", boxQty:12, priceOriginal:"R$ 23,00", priceFinal:"R$ 14,95"},
+  {code:"BA-25366", name:"Tapete Infantil Dupla Face — Estampas Sortidas", category:"Tapetes Infantis", dims:"1,97 x 1,50 m (espessura 6mm)", boxQty:8, priceOriginal:"R$ 43,00", priceFinal:"R$ 27,95"},
+  {code:"BA-19657", name:"Tapete Infantil Térmico — Modelos Sortidos", category:"Tapetes Infantis", dims:"90 x 120 cm", boxQty:60, priceOriginal:"R$ 9,00", priceFinal:"R$ 5,85"}
+];
+const productsBuppy = [
+{name:'BOLA COLORIDA PLAST.C/DESENHO PATA OSSO PET',code:'894229',category:'Brinquedos para Cães',boxQty:120,stock:1156},
+{name:'BOLA SORRISO BRINQUEDO P/ PET PLASTICO 8CM',code:'895448',category:'Brinquedos para Cães',boxQty:120,stock:2180},
+{name:'BOLAS COM SINO SEM MOTOR 18CM',code:'895417',category:'Diversos',boxQty:36,stock:223,futureStock:432},
+{name:'BRINQUEDO BOLA DESENHO ESPORTE LUZ/SOM 7,5CM',code:'894779',category:'Brinquedos para Cães',boxQty:72,stock:1403},
+{name:'BRINQUEDO CACHOR BOLA INTL. RACAO INTER C/SOM',code:'894663',category:'Brinquedos para Cães',boxQty:96,stock:392},
+{name:'BRINQUEDO FORMATO PORCO PLASTICO P/ PET 15CM',code:'894786',category:'Brinquedos para Cães',boxQty:72,stock:727},
+{name:'BRINQUEDO FRANGO DE PLASTICO P/CACHORRO 18CM',code:'894250',category:'Brinquedos para Cães',boxQty:120,stock:2518},
+{name:'BRINQUEDO GALINHA P/CACHORRO 36CM',code:'894052',category:'Brinquedos para Cães',boxQty:72,stock:5897},
+{name:'BRINQUEDO GALINHA PARA CACHORRO 16CM',code:'895615',category:'Brinquedos para Cães',boxQty:96,stock:4136,futureStock:3648},
+{name:'BRINQUEDO GALINHA PARA CACHORRO 38CM',code:'895608',category:'Brinquedos para Cães',boxQty:60,stock:1364,futureStock:2400},
+{name:'BRINQUEDO HAMBURGUER PLASTICO P/CACHORRO 8CM',code:'894083',category:'Brinquedos para Cães',boxQty:120,stock:1331},
+{name:'BRINQUEDO MORD.P/CACHORRO BIFE BORR C/SOM 15C',code:'894694',category:'Brinquedos para Cães',boxQty:96,stock:918},
+{name:'BRINQUEDO PARA PET OSSO MACICO 12CM',code:'894816',category:'Brinquedos para Cães',boxQty:72,stock:2816},
+{name:'BRINQUEDO PATO PELUCIA P/ CACHORRO 31CM',code:'894908',category:'Brinquedos para Cães',boxQty:120,stock:1351},
+{name:'BRINQUEDO PET CHUPETA COM SOM 9, 5CM',code:'894823',category:'Brinquedos para Cães',boxQty:72,stock:2282},
+{name:'BRINQUEDO PET FORMATO PEIXE 12,5CM',code:'894830',category:'Brinquedos para Cães',boxQty:72,stock:2360},
+{name:'BRINQUEDO PET PELUCIA COM SOM BANANA 14CM',code:'894953',category:'Brinquedos para Cães',boxQty:48,stock:2111},
+{name:'BRINQUEDO PET PELUCIA COM SOM CENOURA 15CM',code:'894748',category:'Brinquedos para Cães',boxQty:48,stock:290},
+{name:'CONTROLE REMOTO BRINQUEDO P/ PET PLASTICO 15CM',code:'895455',category:'Brinquedos para Cães',boxQty:72,stock:501,futureStock:864},
+{name:'COXINHA BRINQUEDO P/ PET PLASTICO 12,5CM',code:'895554',category:'Brinquedos para Cães',boxQty:72,stock:1088},
+{name:'LANCA BOLA ARMINHA INTERATIVA BRINQUEDO P/ PETS',code:'895479',category:'Brinquedos para Cães',boxQty:60,stock:514},
+{name:'MEIA PELUCIA BRINQUEDO P/ PETS 22CM',code:'895486',category:'Brinquedos para Cães',boxQty:60,stock:664,futureStock:1980},
+{name:'MORDEDOR ANEL P/CACHORRO 15CM',code:'894458',category:'Brinquedos para Cães',boxQty:96,stock:1218},
+{name:'MORDEDOR ESCOVA DENTAL P/CACHORRO 11CM',code:'894434',category:'Higiene e Escovação',boxQty:120,stock:551},
+{name:'MORDEDOR ESCOVA DENTAL P/CACHORRO 14CM',code:'894441',category:'Higiene e Escovação',boxQty:72,stock:1473},
+{name:'MORDEDOR FINO INTERATIVO P/CACHORRO 14,3CM',code:'894397',category:'Brinquedos para Cães',boxQty:180,stock:806,futureStock:2700},
+{name:'SORVETE BRINQUEDO P/ PET PLASTICO 15CM',code:'895547',category:'Brinquedos para Cães',boxQty:72,stock:1264},
+{name:'ARRANHADOR PAPELAO RETO P/GATOS C/CATNIP 42CM',code:'894113',category:'Brinquedos para Gatos',boxQty:12,stock:1040,futureStock:12},
+{name:'BRINQUEDO BOLA INTER PERSEGUICAO AMARR CORDA',code:'894939',category:'Brinquedos para Cães',boxQty:36,stock:2486},
+{name:'BRINQUEDO BOLA INTER PERSEGUICAO AMARR CORDA',code:'894939',category:'Brinquedos para Cães',boxQty:48,stock:2113,futureStock:1344},
+{name:'BRINQUEDO COM 3 PECAS DE RATO PARA GATO',code:'894847',category:'Brinquedos para Gatos',boxQty:72,stock:379},
+{name:'BRINQUEDO CONJUNTO DE 2 RATOS PELUDOS P/GATO',code:'894854',category:'Brinquedos para Gatos',boxQty:72,stock:1526},
+{name:'BRINQUEDO KIT C/3 RATINHOS P/GATOS 11CM',code:'894236',category:'Brinquedos para Gatos',boxQty:120,stock:3547},
+{name:'BRINQUEDO P/GATO EM FORMATO BOLA C/PENAS 24CM',code:'894618',category:'Brinquedos para Gatos',boxQty:60,stock:1658},
+{name:'BRINQUEDO P/GATO EM FORMATO CONE C/PENAS 17CM',code:'894601',category:'Brinquedos para Gatos',boxQty:252,stock:1110},
+{name:'BRINQUEDO P/GATO EM FORMATO CONE C/PENAS 17CM',code:'894601',category:'Brinquedos para Gatos',boxQty:60,stock:1128},
+{name:'BRINQUEDO P/GATO FORMATO DE RATO C/PENAS 17CM',code:'894625',category:'Brinquedos para Gatos',boxQty:60,stock:1118},
+{name:'BRINQUEDO VARETINHA P/ GATOS COM VENTOSA 85CM',code:'895523',category:'Brinquedos para Gatos',boxQty:120,stock:1512},
+{name:'KIT BRINQUEDO C/ 02 RATOS P/GATOS 12CM',code:'894168',category:'Brinquedos para Gatos',boxQty:120,stock:761,futureStock:3240},
+{name:'MORDEDOR INT.PORTA PETISCOS P/CACHORRO 13CM',code:'894410',category:'Brinquedos para Cães',boxQty:120,stock:1551},
+{name:'TUNEL COLORIDO DE 1,15M P/ PETS',code:'895516',category:'Passeio e Higiene',boxQty:36,stock:507},
+{name:'COMEDOURO DE PLASTICO FLORZINHA 17,5CM',code:'895493',category:'Comedouros e Bebedouros',boxQty:36,stock:2347},
+{name:'COMEDOURO DE PLASTICO P/PETS 14, 5CM',code:'894298',category:'Comedouros e Bebedouros',boxQty:48,stock:758,futureStock:2880},
+{name:'COMEDOURO DE PLASTICO P/PETS 20CM',code:'894311',category:'Comedouros e Bebedouros',boxQty:72,stock:1094,futureStock:3600},
+{name:'COMEDOURO LENTO PARA CAES 19,5CM',code:'894892',category:'Comedouros e Bebedouros',boxQty:36,stock:1827},
+{name:'COMEDOURO LENTO PARA CAES 24,5CM',code:'894885',category:'Comedouros e Bebedouros',boxQty:36,stock:2344},
+{name:'COMEDOURO PLAST ELEVADO FORMATO DE GATO 13,5C',code:'894342',category:'Comedouros e Bebedouros',boxQty:60,stock:887},
+{name:'COMEDOURO PLASTICO MONSTRINHO P/ PETS 18,5CM',code:'895400',category:'Comedouros e Bebedouros',boxQty:36,stock:1885},
+{name:'TIGELA ELEVADA 4 PERNAS PLASTICO P/ PET 25CM',code:'894922',category:'Comedouros e Bebedouros',boxQty:36,stock:1753},
+{name:'COMEDOURO INOX COM DESENHO DE PATAS 16CM',code:'894960',category:'Comedouros e Bebedouros',boxQty:48,stock:1040,futureStock:1920},
+{name:'COMEDOURO INOX COM DESENHO DE PATAS 18CM',code:'894977',category:'Comedouros e Bebedouros',boxQty:48,stock:413,futureStock:1920},
+{name:'COMEDOURO INOX COM DESENHO DE PATAS 30CM',code:'894380',category:'Comedouros e Bebedouros',boxQty:72,stock:306},
+{name:'COMEDOURO INOX COM DESENHO DE PATAS 30CM',code:'894380',category:'Comedouros e Bebedouros',boxQty:36,stock:494,futureStock:1440},
+{name:'BRINQUEDO CORDA BOLA C/02 FORCA P/CACHORRO 30',code:'894540',category:'Brinquedos para Cães',boxQty:72,stock:450},
+{name:'BRINQUEDO CORDA BOLA C/02 FORCA P/CACHORRO 30',code:'895257',category:'Brinquedos para Cães',boxQty:60,stock:800},
+{name:'BRINQUEDO CORDA C/03 NOS P/CACHORRO 48CM',code:'894472',category:'Brinquedos para Cães',boxQty:72,stock:1089},
+{name:'BRINQUEDO CORDA C/03 NOS P/CACHORRO 48CM',code:'895202',category:'Brinquedos para Cães',boxQty:60,stock:1720},
+{name:'BRINQUEDO CORDA C/BOLA E CABO P/CACHORRO 30CM',code:'894557',category:'Brinquedos para Cães',boxQty:72,stock:550},
+{name:'BRINQUEDO CORDA C/BOLA E CABO P/CACHORRO 30CM',code:'895264',category:'Brinquedos para Cães',boxQty:60,stock:1604},
+{name:'BRINQUEDO CORDA C/BOLA TENIS P/CACHORRO 40CM',code:'894526',category:'Brinquedos para Cães',boxQty:60,stock:1770},
+{name:'BRINQUEDO CORDA COM BOLA PARA PET MIX ESPORTES 38C',code:'895028',category:'Brinquedos para Cães',boxQty:60,stock:1146},
+{name:'BRINQUEDO CORDA PUXADOR P/CACHORRO 30CM',code:'894502',category:'Brinquedos para Cães',boxQty:96,stock:639},
+{name:'BRINQUEDO CORDA PUXADOR P/CACHORRO 30CM',code:'895233',category:'Brinquedos para Cães',boxQty:60,stock:1715},
+{name:'COPINHO LIMPADOR DE PATAS 11CM P/ PETS',code:'895387',category:'Higiene e Escovação',boxQty:36,stock:773},
+{name:'CORTADOR DE UNHA P/GATOS 11CM',code:'894359',category:'Higiene e Escovação',boxQty:72,stock:2233,futureStock:3024},
+{name:'ESCOVA DE BANHO P/PET 9CM',code:'894205',category:'Higiene e Escovação',boxQty:96,stock:3031},
+{name:'ESCOVA EM FORMATO DE GATO P/PETS 19CM',code:'894182',category:'Higiene e Escovação',boxQty:96,stock:6255,futureStock:2496},
+{name:'ESCOVA MASSAGEADORA P/GATOS 12, 7CM',code:'894090',category:'Higiene e Escovação',boxQty:96,stock:1231},
+{name:'ESCOVA P/PETS DE PLASTICO 15CM',code:'894106',category:'Higiene e Escovação',boxQty:96,stock:728},
+{name:'KIT CATA CACA P/CACHORRO C/02 ROLOS 7,5CM',code:'894021',category:'Passeio e Higiene',boxQty:120,stock:5345,futureStock:2400},
+{name:'LUVA ESCOVA TIRA PELO DE PETS 23CM',code:'894717',category:'Higiene e Escovação',boxQty:144,stock:6311,futureStock:2880},
+{name:'PA HIGIENICA P/ GATOS 28CM DETALHE GATO NO CABO',code:'895394',category:'Higiene e Escovação',boxQty:72,stock:1145},
+{name:'PENTE P/PETS EM FORMATO DE PATINHA 9,5CM',code:'894199',category:'Higiene e Escovação',boxQty:96,stock:3671},
+{name:'RASQUEADEIRA PRATICA P/PET 13CM',code:'894069',category:'Higiene e Escovação',boxQty:96,stock:872,futureStock:2016},
+{name:'REFIL SACOLAS KIT CATA CACA C/04 ROLOS',code:'894038',category:'Passeio e Higiene',boxQty:120,stock:5525},
+{name:'BRINQUEDO PELUCIA C/CORPO CORDA P/CACH.22CM',code:'894243',category:'Brinquedos para Cães',boxQty:60,stock:1181},
+{name:'BRINQUEDO PELUCIA C/CORPO CORDA P/CACH.22CM',code:'894243',category:'Brinquedos para Cães',boxQty:36,stock:1274,futureStock:1620},
+{name:'BRINQUEDO PELUCIA C/CORPO DE CORDA P/PET 36CM',code:'894571',category:'Brinquedos para Cães',boxQty:72,stock:2142},
+{name:'BRINQUEDO PELUCIA GIRAFA C/CORDA P/PET 28CM',code:'895295',category:'Brinquedos para Cães',boxQty:36,stock:481,futureStock:2520},
+{name:'BRINQUEDO PELUCIA P/ PET C/ CORDA FORMATO DE TENIS',code:'894991',category:'Brinquedos para Cães',boxQty:36,stock:2207,futureStock:2988},
+{name:'BRINQUEDO PELUCIA P/CACHORRO C/CORDA 39CM',code:'895196',category:'Brinquedos para Cães',boxQty:36,stock:1574,futureStock:1152},
+{name:'BRINQUEDO PELUCIA PARA PET COM DISCO 22CM',code:'895042',category:'Brinquedos para Cães',boxQty:36,stock:4303,futureStock:1080},
+{name:'BRINQUEDO PELUCIA PARA PET FORMATO SEREIA 25,5CM',code:'895035',category:'Brinquedos para Cães',boxQty:36,stock:2952,futureStock:1188},
+{name:'BRINQUEDO PELUCIA PARA PET MIX ANIMAIS 29CM',code:'895004',category:'Brinquedos para Cães',boxQty:36,stock:1774},
+{name:'BRINQUEDO PELUCIA PATO COLORIDO P/PETS 23,5CM',code:'894588',category:'Brinquedos para Cães',boxQty:96,stock:2710},
+{name:'COMEDOURO SILICONE LENTO TAPETE VENTOSAS 19CM',code:'894755',category:'Comedouros e Bebedouros',boxQty:36,stock:2608},
+{name:'TIGELA DOBRAVEL PORTATIL P/PASSEAR PET 350ML',code:'894731',category:'Comedouros e Bebedouros',boxQty:72,stock:1766},
+{name:'BRINQUEDO ABACATE P/CATOS C/CATNIP 6CM',code:'895189',category:'Brinquedos para Gatos',boxQty:120,stock:16017,futureStock:2400},
+{name:'COLEIRA COM BANDANA PARA PET GRANDE 30-51CM',code:'895141',category:'Coleiras e Guias',boxQty:120,stock:1795},
+{name:'COLEIRA COM BANDANA PARA PET MEDIA 27-45CM',code:'895134',category:'Coleiras e Guias',boxQty:120,stock:864},
+{name:'COLEIRA COM BANDANA PARA PET PEQUENA 21-35CM',code:'895127',category:'Coleiras e Guias',boxQty:120,stock:1620},
+{name:'COLEIRA COM GUIA PASSEIO PET GRANDE',code:'895110',category:'Coleiras e Guias',boxQty:24,stock:2850,futureStock:1080},
+{name:'COLEIRA COM GUIA PASSEIO PET MEDIO',code:'895103',category:'Coleiras e Guias',boxQty:24,stock:2844,futureStock:1080},
+{name:'COLEIRA COM GUIA PASSEIO PET PEQUENO',code:'895097',category:'Coleiras e Guias',boxQty:24,stock:2856,futureStock:1080},
+{name:'GUIA PEITORAL AJUSTAVEL ESTAMPADO PET G 1.2MX2,0CM',code:'895172',category:'Coleiras e Guias',boxQty:120,stock:331,futureStock:4320},
+{name:'GUIA PEITORAL AJUSTAVEL ESTAMPADO PET M 1.2MX1,5CM',code:'895165',category:'Coleiras e Guias',boxQty:120,stock:7412,futureStock:3480},
+{name:'GUIA PEITORAL AJUSTAVEL ESTAMPADO PET P 1.2MX1,0CM',code:'895158',category:'Coleiras e Guias',boxQty:120,stock:7815,futureStock:5040},
+{name:'GUIA RETRATIL PASSEIO PARA PET 5M',code:'895066',category:'Coleiras e Guias',boxQty:36,stock:4924,futureStock:1080},
+{name:'GUIA RETRATIL PASSEIO PARA PET PATA 3M',code:'895073',category:'Coleiras e Guias',boxQty:36,stock:2822,futureStock:1080},
+{name:'GUIA RETRATIL PASSEIO PARA PET PATA 5M',code:'895080',category:'Coleiras e Guias',boxQty:36,stock:2929,futureStock:1080},
+{name:'GUIA RETRATIL PASSEIO PET 3M',code:'895059',category:'Coleiras e Guias',boxQty:36,stock:5721,futureStock:1080},
+{name:'BOLA FALANTE INTERATIVA DE PELUCIA 18CM',code:'895424',category:'Brinquedos para Cães',boxQty:12,stock:180,comingSoon:true},
+{name:'BRINQUEDO MORDEDOR PARA PET MIX VEGETAIS 11,5CM',code:'895011',category:'Brinquedos para Cães',boxQty:72,stock:1080,comingSoon:true},
+{name:'BRINQUEDO PEIXE ELET INT PELUCIA CATNIP 31CM',code:'894809',category:'Brinquedos para Gatos',boxQty:36,stock:2376,comingSoon:true},
+{name:'BRINQUEDO PINTINHO DE PELUCIA C/CORDA 31CM',code:'894328',category:'Brinquedos para Cães',boxQty:72,stock:1080,comingSoon:true},
+{name:'BRINQUEDO RATINHO VIBRA PELUCIA P/GATO 8,5CM',code:'894878',category:'Brinquedos para Gatos',boxQty:72,stock:504,comingSoon:true},
+{name:'BRINQUEDO VARINHA C/PENAS P/GATOS 59CM',code:'894144',category:'Brinquedos para Gatos',boxQty:120,stock:3600,comingSoon:true},
+{name:'BRINQUEDO VARINHA DE PEIXE P/GATOS 40CM',code:'894151',category:'Brinquedos para Gatos',boxQty:120,stock:4080,comingSoon:true},
+{name:'BRINQUEDO VARINHA DE RATINHO P/GATOS',code:'894137',category:'Brinquedos para Gatos',boxQty:120,stock:4200,comingSoon:true},
+{name:'COMEDOURO DE PLASTICO P/PETS 17, 5CM',code:'894304',category:'Comedouros e Bebedouros',boxQty:48,stock:1536,comingSoon:true},
+{name:'COMEDOURO INOX COM DESENHO DE PATAS 22CM',code:'894373',category:'Comedouros e Bebedouros',boxQty:48,stock:960,comingSoon:true},
+{name:'ESCOVA P/PET DUPLA FACE 21,5CM',code:'895271',category:'Higiene e Escovação',boxQty:48,stock:1872,comingSoon:true},
+{name:'FONTE BEBEDOURO DE AGUA P/ PETS 2, 5L',code:'895332',category:'Comedouros e Bebedouros',boxQty:12,stock:240,comingSoon:true},
+{name:'KIT COM 3 BOLAS DE TENIS P/ PETS',code:'895370',category:'Diversos',boxQty:72,stock:3024,comingSoon:true},
+{name:'MACACO PELUCIA BRINQUEDO P/ PETS 45CM',code:'895462',category:'Brinquedos para Cães',boxQty:36,stock:2088,comingSoon:true},
+{name:'MORDEDOR EM FORMATO DE OSSO P/CACHORRO 15,5CM',code:'894427',category:'Brinquedos para Cães',boxQty:180,stock:2700,comingSoon:true},
+{name:'ROUPA P/ PET DE PELINHO E MORANGO',code:'895707',category:'Roupas para Pet',boxQty:96,stock:768,comingSoon:true},
+{name:'ROUPA P/ PET DE PELINHO E TIGRE',code:'895691',category:'Roupas para Pet',boxQty:96,stock:672,comingSoon:true},
+{name:'ROUPA P/ PET PANDA',code:'895714',category:'Roupas para Pet',boxQty:96,stock:480,comingSoon:true},
+{name:'SACO COM CORDA E BOLINHA BRINQUEDO P/PETS 40CM',code:'895363',category:'Brinquedos para Cães',boxQty:36,stock:1440,comingSoon:true},
+{name:'VESTIDO P/ PET COM FLORES',code:'895684',category:'Roupas para Pet',boxQty:96,stock:768,comingSoon:true}
+];
+const productsAPS = [
+{name:'PISCINA INFLAVEL INFANTIL RETANGULAR 60X50X82',code:'E17044',category:'Piscina e Praia',boxQty:36,stock:2406},
+{name:'BOIA C/ASSENTO E COBERTURA 53CMX65CMX66CM',code:'E17006',category:'Piscina e Praia',boxQty:30,stock:1960},
+{name:'BOIA C/ASSENTO E COBERTURA COQUEIRO 60X67CM',code:'E16993',category:'Piscina e Praia',boxQty:30,stock:1629},
+{name:'BOIA CINTURA CONCHA C/GLITTER 75CM',code:'E16948',category:'Piscina e Praia',boxQty:48,stock:219},
+{name:'BOIA CIRCULAR COLORIDA 55CM',code:'E16931',category:'Piscina e Praia',boxQty:60,stock:832},
+{name:'BOIA CIRCULAR COLORIDA 60CM',code:'E16900',category:'Piscina e Praia',boxQty:72,stock:4007},
+{name:'BOIA CIRCULAR COLORIDA 90CM',code:'E16924',category:'Piscina e Praia',boxQty:36,stock:2464},
+{name:'BOIA DE BRACO INFLAVEL MENINA 14X20CM',code:'E16863',category:'Piscina e Praia',boxQty:72,stock:6887},
+{name:'BOIA DE BRACO INFLAVEL MENINO 14X20CM',code:'E16856',category:'Piscina e Praia',boxQty:72,stock:7185},
+{name:'BOIA DE BRACO INFLAVEL SUMMER FUN 28X18CM',code:'E16870',category:'Piscina e Praia',boxQty:72,stock:8468},
+{name:'BOIA DE BRACO INFLAVEL SUMMER FUN 28X18CM',code:'E16887',category:'Piscina e Praia',boxQty:72,stock:124},
+{name:'COLCHAO INFLAVEL LISO 183X69CM',code:'E17051',category:'Piscina e Praia',boxQty:24,stock:2313},
+{name:'MASCARA DE MERGULHO 16CM',code:'E29597',category:'Piscina e Praia',boxQty:48,stock:2677},
+{name:'OCULOS DE NATACAO INFANTIL',code:'E29627',category:'Piscina e Praia',boxQty:120,stock:2617},
+{name:'OCULOS NATACAO ADULTO COM ESTOJO',code:'E29634',category:'Piscina e Praia',boxQty:48,stock:364},
+{name:'PISCINA INFLAVEL INFANTIL REDONDA 122X25 180LT',code:'E17143',category:'Piscina e Praia',boxQty:12,stock:4142},
+{name:'PISCINA INFLAVEL INFANTIL REDONDA 60X12 28LTS',code:'E17112',category:'Piscina e Praia',boxQty:36,stock:3911},
+{name:'PISCINA INFLAVEL INFANTIL REDONDA 76X25 66LTS',code:'E17136',category:'Piscina e Praia',boxQty:24,stock:804},
+{name:'TOUCA DE NATACAO HYDRO-PRO',code:'E29580',category:'Piscina e Praia',boxQty:72,stock:2140},
+{name:'TOUCA DE NATACAO POLIESTER',code:'E29573',category:'Piscina e Praia',boxQty:120,stock:476},
+{name:'CHOCALHO MORDEDOR',code:'E04629',category:'Diversos',boxQty:96,stock:2487},
+{name:'MONTE E DESMONTE LINHA AVENTURA',code:'E49529',category:'Diversos',boxQty:60,stock:106},
+{name:'PEGA PEIXE A CORDA DUPLO',code:'E49734',category:'Jogos e Diversão',boxQty:108,stock:10257},
+{name:'PEGA PEIXE COM CORDA 10PCS',code:'E49741',category:'Jogos e Diversão',boxQty:144,stock:5567},
+{name:'PEGA PEIXE COM VARA 09PCS',code:'649710',category:'Jogos e Diversão',boxQty:48,stock:2160},
+{name:'PEGA PEIXE COM VARA 09PCS',code:'E49710',category:'Jogos e Diversão',boxQty:48,stock:48},
+{name:'PEGA PEIXE DINO',code:'E04858',category:'Dinossauros',boxQty:96,stock:5369},
+{name:'POLVO EM MOVIMENTO',code:'977555',category:'Animais de Brinquedo',boxQty:36,stock:2082},
+{name:'POLVO EM MOVIMENTO',code:'E77555',category:'Animais de Brinquedo',boxQty:36,stock:730},
+{name:'TELEFONE MUSICAL INFANTIL LINHA BABY',code:'650150',category:'Instrumentos e Sons',boxQty:120,stock:2514},
+{name:'TELEFONE MUSICAL INFANTIL LINHA BABY 650112',code:'E50112',category:'Instrumentos e Sons',boxQty:48,stock:555},
+{name:'TELEFONE MUSICAL INFANTIL LINHA BABY 650136',code:'E50136',category:'Instrumentos e Sons',boxQty:48,stock:762},
+{name:'TELEFONE MUSICAL INFANTIL LINHA BABY 650167',code:'650167',category:'Instrumentos e Sons',boxQty:108,stock:595},
+{name:'BALOES DE AGUA 37PCS',code:'978651',category:'Bolhas e Água',boxQty:144,stock:13387},
+{name:'BOLHA DE SABAO DIVERTIDA',code:'305107',category:'Bolhas e Água',boxQty:192,stock:4913},
+{name:'BOLHA DE SABAO DIVERTIDA',code:'305114',category:'Bolhas e Água',boxQty:96,stock:1790,futureStock:3648},
+{name:'BOLHA DE SABAO DIVERTIDA',code:'305138',category:'Bolhas e Água',boxQty:96,stock:142,futureStock:1430},
+{name:'BOLHA SABAO DINO COM 1 REFIL',code:'E39677',category:'Dinossauros',boxQty:72,stock:1512},
+{name:'LANCA AGUA 15CM',code:'E49970',category:'Bolhas e Água',boxQty:192,stock:239},
+{name:'LANCA AGUA BASTAO DIVERTIDO',code:'422442',category:'Bolhas e Água',boxQty:48,stock:384,futureStock:477},
+{name:'LANCADOR BOLHA CRISTAL LUZ COM REFIL',code:'E22879',category:'Bolhas e Água',boxQty:72,stock:2657},
+{name:'LANCADOR BOLHA DE CRISTAL GOLFINHO C/ REFIL',code:'E79543',category:'Bolhas e Água',boxQty:60,stock:4661},
+{name:'BRINQUEDO DE MONTAR PARAFUSADEIRA ELET 132PCS',code:'579611',category:'Blocos de Montar',boxQty:18,stock:1182},
+{name:'ACESSORIOS CASA DA NINA',code:'E79321',category:'Moda e Beleza',boxQty:36,stock:3051},
+{name:'BONECA JULLY POP STAR',code:'556858',category:'Bonecas',boxQty:72,stock:3063},
+{name:'BONECA LIZ BLOGUEIRA',code:'961639',category:'Bonecas',boxQty:72,stock:282,futureStock:7992},
+{name:'BONECA LIZ BLOGUEIRA FASHION',code:'961646',category:'Bonecas',boxQty:72,stock:1800,futureStock:10512},
+{name:'BONECA NINA BLOGUEIRA',code:'961615',category:'Bonecas',boxQty:48,stock:646,futureStock:6432},
+{name:'BONECA NINA BLOGUEIRA FASHION',code:'961622',category:'Bonecas',boxQty:48,stock:380},
+{name:'BONECA NINA FESTA COM ACESSORIOS',code:'422886',category:'Bonecas',boxQty:48,stock:3739,futureStock:9792},
+{name:'BONECA NINA POP COM ACESSORIOS',code:'422930',category:'Bonecas',boxQty:48,stock:1374,futureStock:2352},
+{name:'BONECA NINA PRAIA COM ACESSORIOS',code:'422947',category:'Bonecas',boxQty:48,stock:48,futureStock:7776},
+{name:'BONECA NINA TROCA DE ROUPA COM ACESSORIOS',code:'E79338',category:'Bonecas',boxQty:24,stock:1318},
+{name:'BONECA NINA VAMOS VIAJAR COM ACESSORIOS',code:'579314',category:'Bonecas',boxQty:48,stock:428,futureStock:6192},
+{name:'BONECA SOFIA ESPORTE COM ACESSORIOS',code:'556896',category:'Bonecas',boxQty:48,stock:480},
+{name:'BONECA SOFIA MARKET COM ACESSORIOS',code:'556902',category:'Bonecas',boxQty:48,stock:948,futureStock:6144},
+{name:'BONECA SOFIA PET COM ACESSORIOS',code:'556889',category:'Bonecas',boxQty:48,stock:1115,futureStock:8016},
+{name:'BONECO KEVIN',code:'579048',category:'Bonecos e Action Figures',boxQty:72,stock:4671,futureStock:21096},
+{name:'KIT FASHION ACESSORIOS DE BELEZA',code:'E57470',category:'Moda e Beleza',boxQty:36,stock:2448},
+{name:'KIT FASHION BONECA E ACESSORIOS',code:'657432',category:'Bonecas',boxQty:36,stock:2183},
+{name:'KIT FASHION BONECA E ACESSORIOS',code:'E57432',category:'Bonecas',boxQty:36,stock:1589},
+{name:'KIT SEREIA COM ACESSORIOS',code:'657418',category:'Animais de Brinquedo',boxQty:48,stock:4176},
+{name:'SEREIA C/ACESSORIO',code:'304773',category:'Animais de Brinquedo',boxQty:48,stock:2058,futureStock:7200},
+{name:'SEREIA C/ACESSORIO',code:'E04773',category:'Animais de Brinquedo',boxQty:132,stock:142},
+{name:'SEREIA C/ACESSORIO',code:'304773',category:'Animais de Brinquedo',boxQty:132,stock:1442},
+{name:'BONECO SUPER CHANGE ROBOT 652017',code:'E52017',category:'Bonecos e Action Figures',boxQty:72,stock:367},
+{name:'CARRO TRANSFORMER',code:'305183',category:'Carrinhos e Veículos',boxQty:60,stock:1869},
+{name:'CARRO TRANSFORMER',code:'E05183',category:'Carrinhos e Veículos',boxQty:180,stock:1418},
+{name:'KIT TROPA DE ELITE II',code:'649628',category:'Militar e Ação',boxQty:48,stock:1965},
+{name:'KIT TROPA DE ELITE II',code:'E49628',category:'Militar e Ação',boxQty:48,stock:1491},
+{name:'KIT TROPA DE ELITE III',code:'422312',category:'Militar e Ação',boxQty:360,stock:1491},
+{name:'KIT TROPA DE ELITE III',code:'E22312',category:'Militar e Ação',boxQty:360,stock:4665},
+{name:'CARRO CONTROLE FUNCAO TOTAL 19CM',code:'E05237',category:'Controle Remoto',boxQty:72,stock:12294},
+{name:'CARRO CONTROLE HIGH SPEED FUNCAO TOTAL 23CM SORTID',code:'556032',category:'Controle Remoto',boxQty:48,stock:3355},
+{name:'CARRO CONTROLE HIGH SPEED FUNCAO TOTAL 23CM SORTID',code:'E56032',category:'Controle Remoto',boxQty:48,stock:11387},
+{name:'CARRO CONTROLE PICKUP TRUCK RACING TOTAL 26CM',code:'E56827',category:'Controle Remoto',boxQty:24,stock:439},
+{name:'CARRO CONTROLE POLICIA COLECAO FUNCAO 24CM',code:'E56155',category:'Controle Remoto',boxQty:48,stock:9974},
+{name:'CARRO CONTROLE POLICIA COLECAO TOTAL 19CM',code:'556162',category:'Controle Remoto',boxQty:72,stock:2070},
+{name:'CARRO CONTROLE POLICIA ELITE COLLECTION 24CM',code:'E56674',category:'Controle Remoto',boxQty:48,stock:889},
+{name:'CARRO CONTROLE RALLYE COLLECTION 20CM',code:'E56650',category:'Controle Remoto',boxQty:48,stock:179},
+{name:'CARRO CONTROLE SPEED COLLECTION 3 FUNCAO 19CM',code:'E56025',category:'Controle Remoto',boxQty:48,stock:11575},
+{name:'CARRO CONTROLE SPORT COLLECTION TOTAL 29CM',code:'E56148',category:'Controle Remoto',boxQty:36,stock:1433},
+{name:'CARRO CONTROLE SPORT SPEED COLLECTION 19CM',code:'E56018',category:'Controle Remoto',boxQty:48,stock:3643},
+{name:'CARRO CONTROLE TOTAL',code:'E05091',category:'Controle Remoto',boxQty:12,stock:344},
+{name:'TREM TANSPARENTE ENGRENAGENS',code:'E77326',category:'Carrinhos e Veículos',boxQty:36,stock:4303},
+{name:'BANDEIRA DE MAO 20X28CM',code:'807021',category:'Fantasia e Festa',boxQty:48,stock:144},
+{name:'BATE BATE TORCEDOR INFLAVEL 10X60CM 2PCS',code:'807038',category:'Fantasia e Festa',boxQty:96,stock:14059},
+{name:'CHAPEU TORCEDOR 38X10CM',code:'860439',category:'Fantasia e Festa',boxQty:48,stock:2969},
+{name:'CHAPEU TORCEDOR CORINGA',code:'807175',category:'Fantasia e Festa',boxQty:24,stock:1265},
+{name:'PERUCA BRASIL TOCEDOR CHANEL',code:'807052',category:'Fantasia e Festa',boxQty:24,stock:48},
+{name:'PERUCA BRASIL TOCEDOR VERDE E AMARELO',code:'807045',category:'Fantasia e Festa',boxQty:24,stock:1677},
+{name:'TIARA BRASIL 50X30CM',code:'860422',category:'Fantasia e Festa',boxQty:96,stock:473},
+{name:'ANIMAIS FAZENDA 07PCS',code:'E57121',category:'Animais de Brinquedo',boxQty:144,stock:15592},
+{name:'ANIMAIS FAZENDA 19PCS',code:'E57091',category:'Animais de Brinquedo',boxQty:96,stock:6720},
+{name:'ANIMAIS FAZENDA 7PCS',code:'E57022',category:'Animais de Brinquedo',boxQty:288,stock:43189},
+{name:'ANIMAIS SELVAGENS SAFARI 10PCS',code:'E57077',category:'Animais de Brinquedo',boxQty:96,stock:671},
+{name:'ANIMAIS SELVAGENS SAFARI 7PCS',code:'E57015',category:'Animais de Brinquedo',boxQty:288,stock:5178},
+{name:'ANIMAIS SELVAGENS SAFARI 8PCS NO TUBO',code:'E57046',category:'Animais de Brinquedo',boxQty:180,stock:10786},
+{name:'CJTO DE DINOSSAURO 4PCS',code:'E78576',category:'Dinossauros',boxQty:72,stock:2853},
+{name:'CJTO DE DINOSSAURO 6PCS',code:'E78569',category:'Dinossauros',boxQty:72,stock:4987},
+{name:'DINO LANCA CARRO C/RAMPA',code:'304759',category:'Dinossauros',boxQty:48,stock:1391,futureStock:2400},
+{name:'DINOSSAURO E CENARIO',code:'305824',category:'Dinossauros',boxQty:48,stock:152},
+{name:'DINOSSAURO E CENARIO',code:'E05824',category:'Dinossauros',boxQty:48,stock:1997},
+{name:'DINOSSAURO EMBORRACHADO C/SOM',code:'305190',category:'Dinossauros',boxQty:60,stock:4275},
+{name:'DINOSSAURO EMBORRACHADO C/SOM',code:'E05190',category:'Dinossauros',boxQty:60,stock:3274},
+{name:'DINOSSAURO EMBORRACHADO C/SOM',code:'E05206',category:'Dinossauros',boxQty:72,stock:6016},
+{name:'DINOSSAURO MONTE E DESMONTE',code:'977562',category:'Dinossauros',boxQty:216,stock:863},
+{name:'ELASTIK DINO',code:'E04520',category:'Dinossauros',boxQty:72,stock:11007},
+{name:'ELASTIK MONSTER',code:'304506',category:'Animais de Brinquedo',boxQty:12,stock:2551},
+{name:'ELASTIK MONSTER',code:'E04506',category:'Animais de Brinquedo',boxQty:12,stock:4400},
+{name:'ESCAVA DINO C/ACESSORIOS',code:'E04407',category:'Dinossauros',boxQty:72,stock:106},
+{name:'ESCAVA DINO C/ACESSORIOS',code:'E04599',category:'Dinossauros',boxQty:48,stock:3623},
+{name:'ESCAVA PEDRAS PRECIOSAS C/ACESSORIOS',code:'E04605',category:'Jogos e Diversão',boxQty:48,stock:856},
+{name:'EXPANDINOS C/06 PCS',code:'304926',category:'Dinossauros',boxQty:120,stock:6413},
+{name:'EXPANDINOS C/06 PCS',code:'E04926',category:'Dinossauros',boxQty:120,stock:8618},
+{name:'GALINHA BORRACHA',code:'E04766',category:'Animais de Brinquedo',boxQty:120,stock:5039},
+{name:'KIT 02 DINOSSAUROS',code:'305817',category:'Dinossauros',boxQty:48,stock:3839},
+{name:'KIT 02 DINOSSAUROS',code:'E05817',category:'Dinossauros',boxQty:48,stock:135},
+{name:'KIT DINOSSAURO 04 PCS',code:'E05145',category:'Dinossauros',boxQty:96,stock:3806},
+{name:'KIT DINOSSAURO 06 PCS',code:'305169',category:'Dinossauros',boxQty:96,stock:180},
+{name:'KIT DINOSSAURO EMBORRACHADO',code:'E79819',category:'Dinossauros',boxQty:60,stock:827},
+{name:'KIT DINOSSAURO EMBORRACHADO (11PCS)',code:'E79826',category:'Dinossauros',boxQty:60,stock:911},
+{name:'MOTORCYCLE DINOSSAURO',code:'304643',category:'Dinossauros',boxQty:96,stock:2086},
+{name:'BICHINHOS COM ARGOLAS',code:'978835',category:'Animais de Brinquedo',boxQty:72,stock:4608,futureStock:3600},
+{name:'MESA DESENHO INFANT C/ PROJETOR DESENHO',code:'E77463',category:'Arte e Desenho',boxQty:48,stock:452},
+{name:'MESA DESENHO INFANT C/ PROJETOR DESENHO GRAND',code:'E77470',category:'Arte e Desenho',boxQty:24,stock:951},
+{name:'TABLET LOUSA MAGICA 21,5X14,5CM',code:'963565',category:'Arte e Desenho',boxQty:100,stock:9193},
+{name:'TABLET LOUSA MAGICA 25,3X17,3CM',code:'303226',category:'Arte e Desenho',boxQty:72,stock:4955},
+{name:'BOLA DE BASKETBALL 3',code:'960731',category:'Esportes',boxQty:80,stock:80},
+{name:'BOLA DE FUTEBOL BRASIL N5',code:'300232',category:'Esportes',boxQty:100,stock:33397},
+{name:'BOLA DE FUTEBOL N 3',code:'960724',category:'Esportes',boxQty:100,stock:1261},
+{name:'KIT SKATE E ACESSORIOS',code:'649413',category:'Esportes',boxQty:6,stock:1750,futureStock:3600},
+{name:'KIT SKATE E ACESSORIOS',code:'E49413',category:'Esportes',boxQty:6,stock:1028},
+{name:'PULA CORDA',code:'E04810',category:'Esportes',boxQty:120,stock:120},
+{name:'RAMPA CORRIMAO P/SKATE DE DEDO',code:'E05893',category:'Jogos e Diversão',boxQty:48,stock:2614},
+{name:'COZINHA COLECAO CREC CREC 10PCS',code:'E05053',category:'Cozinha e Casinha',boxQty:60,stock:108},
+{name:'COZINHA COLECAO CREC CREC KIT 13PCS',code:'961301',category:'Cozinha e Casinha',boxQty:72,stock:2584},
+{name:'COZINHA COLECAO CREC CREC KIT 13PCS',code:'E61301',category:'Cozinha e Casinha',boxQty:72,stock:5924},
+{name:'DECORA UNHAS FASHION',code:'304469',category:'Moda e Beleza',boxQty:48,stock:2207},
+{name:'DECORA UNHAS FASHION',code:'304476',category:'Moda e Beleza',boxQty:48,stock:1776,futureStock:1920},
+{name:'DECORA UNHAS FASHION',code:'304780',category:'Moda e Beleza',boxQty:96,stock:1429},
+{name:'DECORA UNHAS FASHION',code:'E04476',category:'Moda e Beleza',boxQty:48,stock:690},
+{name:'DOUTOR DENTINHO',code:'539738',category:'Cozinha e Casinha',boxQty:80,stock:190},
+{name:'FAST FOOD BURGUER COM BATATA',code:'E78712',category:'Cozinha e Casinha',boxQty:48,stock:222},
+{name:'FAST FOOD COLECAO CREC CREC',code:'E04704',category:'Cozinha e Casinha',boxQty:72,stock:934},
+{name:'FEIRINHA FRUTAS ORGANICAS COLECAO CREC CREC',code:'E78675',category:'Cozinha e Casinha',boxQty:48,stock:1810},
+{name:'KIT COZINHA 15PCS',code:'978705',category:'Cozinha e Casinha',boxQty:48,stock:1248},
+{name:'KIT DOUTOR',code:'649321',category:'Cozinha e Casinha',boxQty:60,stock:5019},
+{name:'KIT FERRAMENTAS',code:'649314',category:'Diversos',boxQty:48,stock:524,futureStock:1344},
+{name:'KIT FERRAMENTAS COM CAPACETE',code:'657272',category:'Diversos',boxQty:48,stock:808},
+{name:'KIT PIZZA E ACESSORIOS',code:'E57449',category:'Cozinha e Casinha',boxQty:36,stock:1337},
+{name:'LANCHINHO COLECAO CREC CREC',code:'304698',category:'Cozinha e Casinha',boxQty:48,stock:625},
+{name:'LANCHINHO COLECAO CREC CREC',code:'E04698',category:'Cozinha e Casinha',boxQty:48,stock:2702},
+{name:'MINHA COZINHA C/LUZ E SOM 2 MODULO I 557312',code:'E57312',category:'Cozinha e Casinha',boxQty:24,stock:343},
+{name:'MINHA COZINHA MODULO I 557343',code:'E57343',category:'Cozinha e Casinha',boxQty:24,stock:954},
+{name:'PIZZA COM ACESSORIOS COLECAO CREC CREC',code:'978668',category:'Cozinha e Casinha',boxQty:48,stock:1050},
+{name:'RAMPA SKATE DE DEDO',code:'E05886',category:'Jogos e Diversão',boxQty:24,stock:374},
+{name:'SKATE DE DEDO',code:'E05879',category:'Jogos e Diversão',boxQty:48,stock:1472},
+{name:'MOLA DIVERTIDA 7,5X6,5',code:'304384',category:'Jogos e Diversão',boxQty:120,stock:7320},
+{name:'MOLA DIVERTIDA 7,5X6,5',code:'E04384',category:'Jogos e Diversão',boxQty:120,stock:3572},
+{name:'SQUISHY PELUCIA',code:'304513',category:'Jogos e Diversão',boxQty:72,stock:987},
+{name:'SQUISHY PELUCIA',code:'E04513',category:'Jogos e Diversão',boxQty:72,stock:494},
+{name:'SQUISHY TOYS STRESS',code:'E04537',category:'Jogos e Diversão',boxQty:72,stock:5704},
+{name:'SQUISHY URSO',code:'E04490',category:'Jogos e Diversão',boxQty:36,stock:2865},
+{name:'JOGO AQUA ARGOLAS',code:'304988',category:'Jogos e Diversão',boxQty:144,stock:5866},
+{name:'JOGO AQUA ARGOLAS',code:'304995',category:'Jogos e Diversão',boxQty:96,stock:5903},
+{name:'JOGO AQUA ARGOLAS',code:'E04988',category:'Jogos e Diversão',boxQty:144,stock:2450},
+{name:'JOGO AQUA ARGOLAS',code:'E04995',category:'Jogos e Diversão',boxQty:96,stock:3220},
+{name:'JOGO PULA MACACO',code:'977432',category:'Jogos e Diversão',boxQty:24,stock:59},
+{name:'ARCO E FLECHA I 650310',code:'650310',category:'Armas de Brinquedo',boxQty:96,stock:1415},
+{name:'ARCO E FLECHA I 650310',code:'E50310',category:'Armas de Brinquedo',boxQty:96,stock:135},
+{name:'ARCO E FLECHA III 650334',code:'650334',category:'Armas de Brinquedo',boxQty:96,stock:769},
+{name:'DISPARADOR DE DARDOS C/LUVA',code:'304919',category:'Armas de Brinquedo',boxQty:48,stock:184,futureStock:4800},
+{name:'KIT ESPADA COM MASCARA',code:'E57241',category:'Militar e Ação',boxQty:48,stock:6316},
+{name:'KIT PISTOLA LANCADORA DARDOS C/ MASCARA',code:'E22619',category:'Armas de Brinquedo',boxQty:12,stock:2599},
+{name:'KIT POLICIA DE ELITE',code:'E22428',category:'Militar e Ação',boxQty:72,stock:1004},
+{name:'LANCA DARDOS BLASTER COM 4 DARDOS',code:'978620',category:'Armas de Brinquedo',boxQty:72,stock:607},
+{name:'LANCA DARDOS RAVIL C/REFIL',code:'305008',category:'Armas de Brinquedo',boxQty:36,stock:216},
+{name:'LANCA DARDOS RAVIL C/REFIL E PENTE',code:'305022',category:'Armas de Brinquedo',boxQty:24,stock:312},
+{name:'LANCADOR DE FOGUETES',code:'E05800',category:'Esportes',boxQty:48,stock:3174},
+{name:'METRALHADORA LANCA DARDOS SEMIAUTOMATICA II',code:'E79697',category:'Armas de Brinquedo',boxQty:12,stock:277},
+{name:'METRALHADORA LANCADORA DE DARDOS I 649949',code:'649949',category:'Armas de Brinquedo',boxQty:24,stock:55,futureStock:480},
+{name:'METRALHADORA LANCADORA DE DARDOS II 649956',code:'649956',category:'Armas de Brinquedo',boxQty:24,stock:714,futureStock:2208},
+{name:'PISTOLA DARDOS 3 EM 1',code:'978613',category:'Armas de Brinquedo',boxQty:48,stock:539,futureStock:2112},
+{name:'PISTOLA LANCA AVIAO PLANADOR',code:'304711',category:'Carrinhos e Veículos',boxQty:36,stock:1476,futureStock:1800},
+{name:'PISTOLA LANCA AVIAO PLANADOR',code:'E04711',category:'Carrinhos e Veículos',boxQty:36,stock:179},
+{name:'PISTOLA LANCA AVIAO PLANADOR',code:'E04728',category:'Carrinhos e Veículos',boxQty:48,stock:1916},
+{name:'PISTOLA LANCA BOLAS',code:'E78590',category:'Armas de Brinquedo',boxQty:36,stock:649},
+{name:'PISTOLA LANCADORA C/3 DARDOS DE ESPUMA 649925',code:'E49925',category:'Armas de Brinquedo',boxQty:240,stock:377},
+{name:'PISTOLA LANCADORA C/3 PC DARDOS ESPUMA 649918',code:'649918',category:'Armas de Brinquedo',boxQty:120,stock:1077,futureStock:3840},
+{name:'PISTOLA LANCADORA WARS C/ 2 CART. 6 DARDOS',code:'422626',category:'Armas de Brinquedo',boxQty:36,stock:102,futureStock:790},
+{name:'PISTOLA SUPER LANCA AGUA',code:'978736',category:'Armas de Brinquedo',boxQty:36,stock:465,futureStock:2771},
+{name:'RIFLE LANCADORA C/04 DARDOS DE ESPUMA E ACESS 63CM',code:'649932',category:'Armas de Brinquedo',boxQty:36,stock:2695},
+{name:'RIFLE LANCADORA C/04 DARDOS DE ESPUMA E ACESS 63CM',code:'E49932',category:'Armas de Brinquedo',boxQty:36,stock:6872},
+{name:'KIT MANIA BIJU III',code:'579505',category:'Diversos',boxQty:24,stock:2937,futureStock:4560},
+{name:'KIT MANIA BIJU III',code:'E79505',category:'Diversos',boxQty:24,stock:94},
+{name:'MANIA DE BIJU 04',code:'304681',category:'Moda e Beleza',boxQty:36,stock:2259,futureStock:1044},
+{name:'MANIA DE BIJU 6',code:'304834',category:'Moda e Beleza',boxQty:48,stock:8304},
+{name:'MANIA DE BIJU I',code:'579437',category:'Moda e Beleza',boxQty:72,stock:1366},
+{name:'MANIA DE BIJU I',code:'E79437',category:'Moda e Beleza',boxQty:72,stock:493},
+{name:'MANIA DE BIJU PULSEIRAS FASHION',code:'304452',category:'Moda e Beleza',boxQty:48,stock:1529,futureStock:4704},
+{name:'KIT MASSINHA BRINCANDO E APRENDENDO',code:'422664',category:'Massinha de Modelar',boxQty:24,stock:6419},
+{name:'KIT MASSINHA DE MODELAR 652352',code:'652352',category:'Massinha de Modelar',boxQty:48,stock:1440,futureStock:3360},
+{name:'KIT MASSINHA DE MODELAR 652352',code:'E52352',category:'Massinha de Modelar',boxQty:48,stock:1344},
+{name:'KIT MASSINHA DE MODELAR 652369',code:'652369',category:'Massinha de Modelar',boxQty:48,stock:2158},
+{name:'KIT MASSINHA DE MODELAR 652369',code:'E52369',category:'Massinha de Modelar',boxQty:48,stock:7516},
+{name:'KIT MASSINHA DE MODELAR 652376',code:'652376',category:'Massinha de Modelar',boxQty:24,stock:1937},
+{name:'KIT MASSINHA DE MODELAR DIVERTIR',code:'422640',category:'Massinha de Modelar',boxQty:48,stock:3790},
+{name:'KIT MASSINHA DE MODELAR DIVERTIR',code:'E22640',category:'Massinha de Modelar',boxQty:48,stock:3771},
+{name:'MASSINHA DE MODELAR COM ACESSORIOS DINOSSAURO',code:'978781',category:'Dinossauros',boxQty:48,stock:3546},
+{name:'MICROFONE INFANTIL COM AMPLIFICADOR',code:'978644',category:'Instrumentos e Sons',boxQty:48,stock:468,futureStock:3600},
+{name:'PEDESTAL C/ 02 MICROFONES INFANTIL SOM E VOZ',code:'E50242',category:'Instrumentos e Sons',boxQty:24,stock:8108},
+{name:'CITY TREM COM TRILHOS E VAGOES',code:'579529',category:'Carrinhos e Veículos',boxQty:96,stock:162},
+{name:'ESTACAO POLICIAL',code:'304971',category:'Diversos',boxQty:72,stock:288},
+{name:'LANCADOR DE CARRO',code:'305909',category:'Diversos',boxQty:72,stock:283,futureStock:3453},
+{name:'PISTA LOOPING 360 STRIKE',code:'E79383',category:'Carrinhos e Veículos',boxQty:48,stock:79},
+{name:'PISTA LOOPING COM CARRO DINOSSAURO',code:'E78774',category:'Dinossauros',boxQty:18,stock:41},
+{name:'BETONEIRA BATE E VOLTA C/LUZ E SOM',code:'556506',category:'Carrinhos e Veículos',boxQty:72,stock:2660},
+{name:'BETONEIRA BATE E VOLTA C/LUZ E SOM',code:'E56506',category:'Carrinhos e Veículos',boxQty:72,stock:183},
+{name:'BOMBEIRO BATE E VOLTA C/LUZ E SOM',code:'556520',category:'Carrinhos e Veículos',boxQty:72,stock:97},
+{name:'CARRINHO BATE E VOLTA ESCAVADEIRA',code:'E56445',category:'Carrinhos e Veículos',boxQty:144,stock:3203},
+{name:'CARRO BATE E VOLTA',code:'E56438',category:'Carrinhos e Veículos',boxQty:72,stock:3668},
+{name:'CARRO BATE E VOLTA JEEP MILITAR',code:'556421',category:'Carrinhos e Veículos',boxQty:72,stock:857,futureStock:4896},
+{name:'CARRO BATE E VOLTA JEEP MILITAR',code:'E56421',category:'Carrinhos e Veículos',boxQty:72,stock:862},
+{name:'CARRO BATE E VOLTA POLICIA',code:'E56407',category:'Carrinhos e Veículos',boxQty:72,stock:107},
+{name:'CARRO BATE E VOLTA TANK MISSIL',code:'556414',category:'Carrinhos e Veículos',boxQty:72,stock:1645},
+{name:'CARRO BATE E VOLTA TANK MISSIL',code:'E56414',category:'Carrinhos e Veículos',boxQty:72,stock:995},
+{name:'CARRO DINOSSAURO',code:'978811',category:'Dinossauros',boxQty:48,stock:2111},
+{name:'CARRO DINOSSAURO',code:'E78811',category:'Dinossauros',boxQty:48,stock:621},
+{name:'CARRO OFF ROAD 305831',code:'305831',category:'Carrinhos e Veículos',boxQty:120,stock:1916},
+{name:'CARRO OFF ROAD 305848',code:'305848',category:'Carrinhos e Veículos',boxQty:120,stock:1796},
+{name:'CARRO OFF ROAD C/CHAVE LANCADORA',code:'305794',category:'Carrinhos e Veículos',boxQty:96,stock:9114},
+{name:'COLECAO MINI CAR FRICCAO 3PCS',code:'E50624',category:'Carrinhos e Veículos',boxQty:120,stock:705},
+{name:'COLECAO MINI CARS FRICCAO 5PCS',code:'E50648',category:'Carrinhos e Veículos',boxQty:90,stock:1306},
+{name:'COLECAO MOTO 3PCS',code:'E57213',category:'Carrinhos e Veículos',boxQty:120,stock:5517},
+{name:'COLECAO MOTO 4PCS',code:'E57206',category:'Carrinhos e Veículos',boxQty:120,stock:2040},
+{name:'KIT TRATOR FAZENDA 3PCS',code:'978637',category:'Diversos',boxQty:48,stock:958},
+{name:'MINI CARROS COLECAO 10PCS',code:'556575',category:'Carrinhos e Veículos',boxQty:80,stock:1800},
+{name:'MINI CARROS COLECAO C/ LANCADOR 5PCS',code:'E22541',category:'Carrinhos e Veículos',boxQty:288,stock:9102},
+{name:'MONSTER TRUCKS',code:'304957',category:'Carrinhos e Veículos',boxQty:12,stock:1983},
+{name:'MONSTER TRUCKS',code:'E04940',category:'Carrinhos e Veículos',boxQty:12,stock:538},
+{name:'MONSTER TRUCKS C/DISPARADOR',code:'304742',category:'Carrinhos e Veículos',boxQty:96,stock:3237,futureStock:3360},
+{name:'MONSTER TRUCKS C/DISPARADOR',code:'E04742',category:'Carrinhos e Veículos',boxQty:120,stock:5489},
+{name:'TREM FUMACA COM TRILHO',code:'961288',category:'Carrinhos e Veículos',boxQty:36,stock:62,futureStock:1548},
+{name:'BONECA COLECAO FAZENDA',code:'E49017',category:'Bonecas',boxQty:72,stock:1294},
+{name:'CARRO CONTROLE POLICE COLLECTION 19CM',code:'E56742',category:'Controle Remoto',boxQty:48,stock:2921},
+{name:'DINOSSAURO',code:'E05862',category:'Dinossauros',boxQty:48,stock:1558},
+{name:'DINOSSAURO LANCA DARDOS',code:'E78606',category:'Dinossauros',boxQty:60,stock:11333},
+{name:'JACARE BOBO PVC 72X27CM',code:'E17075',category:'Animais de Brinquedo',boxQty:50,stock:2893},
+{name:'JOGO BULDOGUE DENTISTA',code:'E77401',category:'Jogos e Diversão',boxQty:18,stock:1964},
+{name:'MESA DE PEBOLIM',code:'E04797',category:'Jogos e Diversão',boxQty:96,stock:1596},
+{name:'METRALHADORA LANCA DARDOS SEMIAUTOMATICA I',code:'E79703',category:'Armas de Brinquedo',boxQty:24,stock:78},
+{name:'METRALHADORA LANCA DARDOS SEMIAUTOMATICA III',code:'E79710',category:'Armas de Brinquedo',boxQty:12,stock:165},
+{name:'ANDADOR EDUCATIVO BEBE C/ LOUSA MAGICA MUSICAL 40X',code:'309754',category:'Diversos',boxQty:12,stock:599,comingSoon:true},
+{name:'CARANGUEJO EM MOVIMENTO',code:'977487',category:'Animais de Brinquedo',boxQty:48,stock:717,comingSoon:true},
+{name:'CHOCALHO MORDEDOR',code:'304629',category:'Diversos',boxQty:48,stock:1440,comingSoon:true},
+{name:'ELEFANTE BRINCALHAO MUSICAL',code:'310200',category:'Diversos',boxQty:24,stock:1548,comingSoon:true},
+{name:'HELICOPTERO PARA BEBE COM LUZ E MUSICA',code:'310255',category:'Diversos',boxQty:24,stock:1189,comingSoon:true},
+{name:'JOANINHA COM LUZ MUSICAL',code:'310699',category:'Diversos',boxQty:36,stock:241,comingSoon:true},
+{name:'KIT CHOCALHO 3PCS',code:'657388',category:'Diversos',boxQty:36,stock:2591,comingSoon:true},
+{name:'KIT CONSTRUTOR COM 4 CAMINHOES',code:'657302',category:'Blocos de Montar',boxQty:48,stock:2112,comingSoon:true},
+{name:'MICROFONE COM LUZ E MUSICA PARA BEBE',code:'310262',category:'Instrumentos e Sons',boxQty:24,stock:1210,comingSoon:true},
+{name:'PEGA PEIXE COM VARA 06PCS',code:'649727',category:'Jogos e Diversão',boxQty:48,stock:2856,comingSoon:true},
+{name:'PEGA PEIXE TUBARAO COM 15 PEIXINHOS',code:'302083',category:'Jogos e Diversão',boxQty:24,stock:3515,comingSoon:true},
+{name:'PESCARIA MAGNETICA DIVERTIDA MADEIRA',code:'300539',category:'Diversos',boxQty:36,stock:2831,comingSoon:true},
+{name:'POLVO DANCANTE COM LUZ E SOM',code:'310385',category:'Animais de Brinquedo',boxQty:36,stock:1543,comingSoon:true},
+{name:'PRINCESA DRESS BATE E VOLTA COM LUZ',code:'310217',category:'Carrinhos e Veículos',boxQty:24,stock:1258,comingSoon:true},
+{name:'TECLADO SAPO MUSICAL COM LUZ E SOM',code:'306807',category:'Diversos',boxQty:24,stock:183,comingSoon:true},
+{name:'TELEFONE EDUCATIVO COELHO',code:'306784',category:'Instrumentos e Sons',boxQty:48,stock:2582,comingSoon:true},
+{name:'TELEFONE MUSICAL INFANTIL LINHA BABY',code:'650150',category:'Instrumentos e Sons',boxQty:48,stock:3552,comingSoon:true},
+{name:'TELEFONE MUSICAL INFANTIL LINHA BABY 650112',code:'650112',category:'Instrumentos e Sons',boxQty:48,stock:2160,comingSoon:true},
+{name:'TELEFONE MUSICAL INFANTIL LINHA BABY 650136',code:'650136',category:'Instrumentos e Sons',boxQty:48,stock:2400,comingSoon:true},
+{name:'TELEFONE MUSICAL INFANTIL LINHA BABY 650167',code:'650167',category:'Instrumentos e Sons',boxQty:48,stock:3742,comingSoon:true},
+{name:'UNICORNIO EQUILIBRISTA LUZ E SOM',code:'310293',category:'Diversos',boxQty:24,stock:1100,comingSoon:true},
+{name:'VARINHA MAGICA COM LUZ E MUSICA',code:'310279',category:'Diversos',boxQty:24,stock:1237,comingSoon:true},
+{name:'VOLANTE DE COELHINHO COM LUZ E MUSICA',code:'310286',category:'Diversos',boxQty:24,stock:1174,comingSoon:true},
+{name:'BALDE DE PRAIA DOBRAVEL CASTELO PRAIA 08 PECAS QUA',code:'310118',category:'Diversos',boxQty:12,stock:1826,comingSoon:true},
+{name:'BALDE DE PRAIA DOBRAVEL CASTELO PRAIA 08 PECAS RED',code:'310101',category:'Diversos',boxQty:12,stock:574,comingSoon:true},
+{name:'BALDE DE PRAIA DOBRAVEL SILICONE C/ PA',code:'310125',category:'Diversos',boxQty:36,stock:1005,comingSoon:true},
+{name:'BALDE DE PRAIA DOBRAVEL SILIONE C/2 PA',code:'310064',category:'Diversos',boxQty:12,stock:1860,comingSoon:true},
+{name:'BALOES DE AGUA 37PCS',code:'304865',category:'Bolhas e Água',boxQty:72,stock:288,comingSoon:true},
+{name:'BOLHA DE SABAO DIVERTIDA C/VENTILADOR UNICORNIO',code:'303707',category:'Bolhas e Água',boxQty:72,stock:2648,comingSoon:true},
+{name:'BOLHA DE SABAO DIVERTIDA PEIXE E TUBARAO',code:'301062',category:'Bolhas e Água',boxQty:72,stock:2653,comingSoon:true},
+{name:'BOLHA SABAO DINO COM 1 REFIL',code:'539677',category:'Dinossauros',boxQty:48,stock:2112,comingSoon:true},
+{name:'BOLHA SABAO GIGANTE',code:'539714',category:'Bolhas e Água',boxQty:36,stock:2628,comingSoon:true},
+{name:'BOLHA SABAO PEIXE COM 1 REFIL',code:'539752',category:'Bolhas e Água',boxQty:48,stock:1773,comingSoon:true},
+{name:'LANCA AGUA 15CM',code:'649970',category:'Bolhas e Água',boxQty:96,stock:4704,comingSoon:true},
+{name:'LANCA AGUA 20CM',code:'649994',category:'Bolhas e Água',boxQty:72,stock:3600,comingSoon:true},
+{name:'LANCA AGUA BASTAO EM ESPUMA 40X5CM 422572',code:'422572',category:'Bolhas e Água',boxQty:48,stock:2928,comingSoon:true},
+{name:'LANCADOR BOLHA CRISTAL COM REFIL',code:'422848',category:'Bolhas e Água',boxQty:48,stock:3312,comingSoon:true},
+{name:'LANCHA POLICIAL',code:'309792',category:'Diversos',boxQty:60,stock:2875,comingSoon:true},
+{name:'PISTOLA BOLHA DE SABAO AUTOMATICA',code:'303691',category:'Armas de Brinquedo',boxQty:48,stock:2107,comingSoon:true},
+{name:'PISTOLA BOLHA DE SABAO TUBARAO AUTOMATICA',code:'310644',category:'Armas de Brinquedo',boxQty:48,stock:2304,comingSoon:true},
+{name:'PISTOLA DE AGUA 35CM',code:'301079',category:'Armas de Brinquedo',boxQty:24,stock:4579,comingSoon:true},
+{name:'VARINHA LANCA BOLHA C/ FUMACA',code:'310446',category:'Bolhas e Água',boxQty:24,stock:1335,comingSoon:true},
+{name:'BLOCOS DE MONTAR 173 PECAS CARRO ESPORTIVO',code:'307194',category:'Carrinhos e Veículos',boxQty:36,stock:929,comingSoon:true},
+{name:'BLOCOS DE MONTAR 212 PECAS CARRO FORCA COMBATE',code:'307187',category:'Carrinhos e Veículos',boxQty:12,stock:1025,comingSoon:true},
+{name:'BLOCOS P/ MONTAR JURASSIC 101PCS',code:'579475',category:'Blocos de Montar',boxQty:48,stock:1236,comingSoon:true},
+{name:'BLOCOS P/ MONTAR PIRATAS 96PCS',code:'579451',category:'Blocos de Montar',boxQty:48,stock:1148,comingSoon:true},
+{name:'JOGO BLOCOS DE CONSTRUCAO 52 PECAS',code:'302045',category:'Blocos de Montar',boxQty:36,stock:1006,comingSoon:true},
+{name:'KIT BONECO MONTAR PATROL',code:'310620',category:'Bonecos e Action Figures',boxQty:72,stock:4603,comingSoon:true},
+{name:'KIT BONECO MONTAR PIRATA',code:'310637',category:'Bonecos e Action Figures',boxQty:72,stock:6381,comingSoon:true},
+{name:'MESA DIDATICA BLOCOS 80 PECAS MENINO',code:'310170',category:'Blocos de Montar',boxQty:12,stock:1026,comingSoon:true},
+{name:'BONECA BAILARINA',code:'978804',category:'Bonecas',boxQty:48,stock:1968,comingSoon:true},
+{name:'BONECA BELLA BALADA',code:'556292',category:'Bonecas',boxQty:72,stock:12744,comingSoon:true},
+{name:'BONECA BELLA FASHION',code:'556278',category:'Bonecas',boxQty:72,stock:8063,comingSoon:true},
+{name:'BONECA BELLA MISS',code:'556926',category:'Bonecas',boxQty:72,stock:10368,comingSoon:true},
+{name:'BONECA BELLA NOIVA',code:'556933',category:'Bonecas',boxQty:72,stock:22967,comingSoon:true},
+{name:'BONECA BELLA PRINCESA',code:'556261',category:'Bonecas',boxQty:72,stock:11544,comingSoon:true},
+{name:'BONECA BELLA SEREIA',code:'556285',category:'Bonecas',boxQty:72,stock:10224,comingSoon:true},
+{name:'BONECA LIZ BALLET',code:'422978',category:'Bonecas',boxQty:72,stock:8136,comingSoon:true},
+{name:'BONECA LIZ FESTA',code:'422954',category:'Bonecas',boxQty:72,stock:13824,comingSoon:true},
+{name:'BONECA LIZ PASSEIO',code:'422992',category:'Bonecas',boxQty:72,stock:10152,comingSoon:true},
+{name:'BONECA LIZ POP',code:'423005',category:'Bonecas',boxQty:72,stock:15119,comingSoon:true},
+{name:'BONECA LIZ PRINCESA',code:'422985',category:'Bonecas',boxQty:72,stock:19943,comingSoon:true},
+{name:'BONECA LIZ SEREIA',code:'422961',category:'Bonecas',boxQty:72,stock:14687,comingSoon:true},
+{name:'BONECA MALU',code:'556391',category:'Bonecas',boxQty:180,stock:59760,comingSoon:true},
+{name:'BONECA NINA GRAVIDA & BEBE COM ACESSORIOS',code:'579284',category:'Bonecas',boxQty:48,stock:8208,comingSoon:true},
+{name:'BONECA NINA HIGH SCHOOL COM ACESSORIOS',code:'579307',category:'Bonecas',boxQty:48,stock:8976,comingSoon:true},
+{name:'BONECA NINA PASSEIO COM ACESSORIOS',code:'422923',category:'Bonecas',boxQty:48,stock:3672,comingSoon:true},
+{name:'BONECA NINA PRINCESA COM ACESSORIOS',code:'422916',category:'Bonecas',boxQty:48,stock:6144,comingSoon:true},
+{name:'BONECA SOFIA DOUTORA COM ACESSORIOS',code:'556872',category:'Bonecas',boxQty:48,stock:10032,comingSoon:true},
+{name:'BONECA SOFIA FADA COM ACESSORIOS',code:'556919',category:'Bonecas',boxQty:48,stock:1872,comingSoon:true},
+{name:'BONECA SOFIA FASHION COM ACESSORIOS',code:'556315',category:'Bonecas',boxQty:48,stock:3312,comingSoon:true},
+{name:'CARRINHO DE BONECA DOBRAVEL EM METAL',code:'649826',category:'Bonecas',boxQty:36,stock:1692,comingSoon:true},
+{name:'CASTELO DA PRINCESA',code:'309730',category:'Diversos',boxQty:48,stock:2054,comingSoon:true},
+{name:'KIT BONECA COM ACESSORIOS',code:'657494',category:'Bonecas',boxQty:36,stock:3060,comingSoon:true},
+{name:'KIT FASHION ACESSORIOS DE BELEZA',code:'657470',category:'Moda e Beleza',boxQty:36,stock:1008,comingSoon:true},
+{name:'KIT FASHION BONECAS E ACESSORIOS 657463',code:'657463',category:'Moda e Beleza',boxQty:36,stock:2376,comingSoon:true},
+{name:'KIT PONEI COM ACESSORIOS',code:'310002',category:'Diversos',boxQty:48,stock:4646,comingSoon:true},
+{name:'KIT SEREIA COM ACESSORIOS PARA MONTAR',code:'310019',category:'Animais de Brinquedo',boxQty:48,stock:4454,comingSoon:true},
+{name:'NINA NO MUNDO DA DIVERSAO II',code:'579420',category:'Diversos',boxQty:24,stock:1824,comingSoon:true},
+{name:'BONECO SUPER CHANGE C/ 2',code:'307989',category:'Bonecos e Action Figures',boxQty:24,stock:1527,comingSoon:true},
+{name:'BONECO SUPER CHANGE ROBOT',code:'307996',category:'Bonecos e Action Figures',boxQty:24,stock:2081,comingSoon:true},
+{name:'BONECO SUPER CHANGE ROBOT',code:'308023',category:'Bonecos e Action Figures',boxQty:24,stock:1195,comingSoon:true},
+{name:'BONECO SUPER CHANGE ROBOT 650990',code:'650990',category:'Bonecos e Action Figures',boxQty:36,stock:825,comingSoon:true},
+{name:'BONECO TRANSFORMERS 556551',code:'556551',category:'Bonecos e Action Figures',boxQty:60,stock:4797,comingSoon:true},
+{name:'CONJUNTO MILITAR LUZ SOM',code:'300478',category:'Militar e Ação',boxQty:12,stock:583,comingSoon:true},
+{name:'CONJUNTO POLICIA',code:'300485',category:'Militar e Ação',boxQty:12,stock:451,comingSoon:true},
+{name:'KIT MILITAR I TOP SECRET 422329',code:'422329',category:'Militar e Ação',boxQty:36,stock:36,comingSoon:true},
+{name:'KIT MILITAR MONTE E DESMONTE',code:'977494',category:'Militar e Ação',boxQty:36,stock:108,comingSoon:true},
+{name:'ROBO MASTER',code:'657333',category:'Bonecos e Action Figures',boxQty:36,stock:1440,comingSoon:true},
+{name:'SUPER CHANGE ANIMAL',code:'300331',category:'Bonecos e Action Figures',boxQty:12,stock:787,comingSoon:true},
+{name:'SUPER CHANGE AVIAO',code:'300324',category:'Bonecos e Action Figures',boxQty:24,stock:1200,comingSoon:true},
+{name:'AVIAO DRONE CONTROLE REMOTO',code:'310309',category:'Controle Remoto',boxQty:4,stock:1800,comingSoon:true},
+{name:'CARRO CONTROLE FUNCAO TOTAL RECARREGAVEL',code:'305084',category:'Controle Remoto',boxQty:6,stock:861,comingSoon:true},
+{name:'CARRO CONTROLE OFF ROAD FUNCAO TOTAL',code:'556629',category:'Controle Remoto',boxQty:6,stock:4174,comingSoon:true},
+{name:'CARRO CONTROLE OFF ROAD FUNCAO TOTAL 24CM',code:'305220',category:'Controle Remoto',boxQty:24,stock:144,comingSoon:true},
+{name:'CARRO CONTROLE PICKUP TRUCK RACING TOTAL 26CM',code:'556827',category:'Controle Remoto',boxQty:24,stock:1206,comingSoon:true},
+{name:'CARRO CONTROLE POLICIA ELITE COLLECTION 24CM',code:'556674',category:'Controle Remoto',boxQty:48,stock:2400,comingSoon:true},
+{name:'CARRO CONTROLE RACER COLLECTION 26CM',code:'556667',category:'Controle Remoto',boxQty:36,stock:1692,comingSoon:true},
+{name:'CARRO CONTROLE REMOTO 26CM ESTILO RACING 1 FUNCAO',code:'310248',category:'Controle Remoto',boxQty:12,stock:2827,comingSoon:true},
+{name:'CARRO CONTROLE REMOTO 27CM',code:'308122',category:'Controle Remoto',boxQty:4,stock:1193,comingSoon:true},
+{name:'CARRO CONTROLE REMOTO ESTILO RACING 1 FUNCAO TOTAL',code:'310392',category:'Controle Remoto',boxQty:24,stock:2424,comingSoon:true},
+{name:'CARRO CONTROLE SPEED COLLECTION 3 FUNCAO 19CM',code:'556025',category:'Controle Remoto',boxQty:48,stock:2264,comingSoon:true},
+{name:'CARRO CONTROLE SPEED RACING 2 FUNCOES 18CM',code:'304582',category:'Controle Remoto',boxQty:48,stock:3120,comingSoon:true},
+{name:'CARRO CONTROLE SPORT COLLECTION TOTAL 29CM',code:'556148',category:'Controle Remoto',boxQty:36,stock:4896,comingSoon:true},
+{name:'CARRO CONTROLE SPORT SPEED COLLECTION 19CM',code:'556018',category:'Controle Remoto',boxQty:48,stock:286,comingSoon:true},
+{name:'CARRO CONTROLE TOTAL',code:'305091',category:'Controle Remoto',boxQty:12,stock:923,comingSoon:true},
+{name:'CARRO DE CONTROLE 27CM FUNCO VOLANTE PEDAL BATERIA',code:'309976',category:'Controle Remoto',boxQty:6,stock:1188,comingSoon:true},
+{name:'CARRO DE CONTROLE FUNCAO TOTAL COM VOLANTE',code:'308139',category:'Controle Remoto',boxQty:24,stock:1174,comingSoon:true},
+{name:'CYBER TRUCK 4X4 CONTROLE FUNCAO TOTAL 28CM',code:'308115',category:'Carrinhos e Veículos',boxQty:24,stock:1267,comingSoon:true},
+{name:'HELICOPTERO VOADOR POR INDUCAO',code:'310323',category:'Controle Remoto',boxQty:24,stock:24,comingSoon:true},
+{name:'ANIMAL COM MOTOCICLETA',code:'300034',category:'Diversos',boxQty:48,stock:4168,comingSoon:true},
+{name:'DINO LANCA CARRO',code:'304612',category:'Dinossauros',boxQty:24,stock:1560,comingSoon:true},
+{name:'DINOSSAURO COM MOTOCICLETA',code:'300027',category:'Dinossauros',boxQty:48,stock:1296,comingSoon:true},
+{name:'DINOSSAURO ESTICA GRUDA',code:'309686',category:'Dinossauros',boxQty:72,stock:4802,comingSoon:true},
+{name:'DINOSSAURO MONTE E DESMONTE',code:'977562',category:'Dinossauros',boxQty:96,stock:9504,comingSoon:true},
+{name:'ESCAVA DINO C/ACESSORIOS',code:'304407',category:'Dinossauros',boxQty:72,stock:3024,comingSoon:true},
+{name:'ESCAVA PEDRAS PRECIOSAS C/ACESSORIOS',code:'304391',category:'Jogos e Diversão',boxQty:72,stock:1724,comingSoon:true},
+{name:'ESCAVA PEDRAS PRECIOSAS C/ACESSORIOS',code:'304605',category:'Jogos e Diversão',boxQty:48,stock:1872,comingSoon:true},
+{name:'GIRAFA ESTICA GRUDA',code:'309679',category:'Animais de Brinquedo',boxQty:72,stock:144,comingSoon:true},
+{name:'BRINQUEDO ESCONDE-ESCONDE ANIMAIS PARA BEBES',code:'309631',category:'Diversos',boxQty:36,stock:1717,comingSoon:true},
+{name:'KIT LOUSA MAGICA COM OCULOS 3D',code:'310354',category:'Diversos',boxQty:24,stock:1174,comingSoon:true},
+{name:'SACOLA PARA PINTAR INFANTIL',code:'305770',category:'Arte e Desenho',boxQty:48,stock:2063,comingSoon:true},
+{name:'TABLET EDUCATIVO INFANTIL',code:'309716',category:'Diversos',boxQty:48,stock:2676,comingSoon:true},
+{name:'TAPETE DE DESENHO COM AGUA',code:'309648',category:'Arte e Desenho',boxQty:24,stock:1197,comingSoon:true},
+{name:'BOLA DE FUTEBOL FLUTUANTE',code:'309952',category:'Esportes',boxQty:36,stock:675,comingSoon:true},
+{name:'BOLA DE VOLEI 5',code:'556971',category:'Esportes',boxQty:100,stock:47200,comingSoon:true},
+{name:'JOGO DE FUTEBOL HOCKEY DE MESA BOLA PLANA AIR',code:'305367',category:'Jogos e Diversão',boxQty:24,stock:1194,comingSoon:true},
+{name:'KIT BASQUETE INFANTIL TABELA CESTA BOLA',code:'309891',category:'Esportes',boxQty:12,stock:2077,comingSoon:true},
+{name:'KIT BOXEADOR',code:'579376',category:'Diversos',boxQty:12,stock:12,comingSoon:true},
+{name:'KIT FRESCOBOL 02 RAQUETES 01 BOLA',code:'644296',category:'Esportes',boxQty:30,stock:2370,comingSoon:true},
+{name:'KIT PING PONG 02 RAQUETE 3 BOLAS',code:'644258',category:'Esportes',boxQty:50,stock:4600,comingSoon:true},
+{name:'MINI BICICLETA DE METAL',code:'300041',category:'Esportes',boxQty:48,stock:4749,comingSoon:true},
+{name:'MINI BICICLETA DE METAL',code:'300058',category:'Esportes',boxQty:48,stock:4797,comingSoon:true},
+{name:'MINI BICICLETA DE METAL',code:'300065',category:'Esportes',boxQty:48,stock:4749,comingSoon:true},
+{name:'MINI BICICLETA DE METAL',code:'300072',category:'Esportes',boxQty:48,stock:4701,comingSoon:true},
+{name:'MINI TRAVE DE FUTEBOL C/ BOLA',code:'309846',category:'Esportes',boxQty:24,stock:1382,comingSoon:true},
+{name:'PATINETE INFANTIL COLORIDO 3 RODAS DOBRAVEL C/LED',code:'300140',category:'Esportes',boxQty:1,stock:6,comingSoon:true},
+{name:'PULA CORDA',code:'304810',category:'Esportes',boxQty:48,stock:2112,comingSoon:true},
+{name:'RAQUETE BEACH INFANTIL C/ BOLA',code:'301444',category:'Esportes',boxQty:24,stock:1176,comingSoon:true},
+{name:'RAQUETE ELASTICA COM BOLA INFANTIL',code:'301468',category:'Esportes',boxQty:24,stock:2362,comingSoon:true},
+{name:'SUPER TACADA COM DISPADOR ALVO E BOLA',code:'309907',category:'Diversos',boxQty:12,stock:1059,comingSoon:true},
+{name:'ASPIRADOR DE PO INFANTIL ELETRICO',code:'310057',category:'Diversos',boxQty:12,stock:441,comingSoon:true},
+{name:'CAIXA REGISTRADORA C/VISOR DIGITAL SONHO PRIN',code:'579857',category:'Moda e Beleza',boxQty:8,stock:776,comingSoon:true},
+{name:'COZINHA COLECAO CREC CREC 10PCS',code:'305053',category:'Cozinha e Casinha',boxQty:48,stock:2640,comingSoon:true},
+{name:'COZINHA COLECAO CREC CREC KIT 6PCS',code:'961271',category:'Cozinha e Casinha',boxQty:48,stock:4176,comingSoon:true},
+{name:'COZINHA COMPLETA C/ ACESSORIOS 45CM',code:'310330',category:'Cozinha e Casinha',boxQty:6,stock:774,comingSoon:true},
+{name:'CX REGISTR.C/LUZ E SOM DIGITAL E ACESS.557237',code:'557237',category:'Diversos',boxQty:12,stock:48,comingSoon:true},
+{name:'DECORA UNHAS FASHION',code:'304780',category:'Moda e Beleza',boxQty:48,stock:2256,comingSoon:true},
+{name:'FAST FOOD BURGUER COM BATATA',code:'978712',category:'Cozinha e Casinha',boxQty:48,stock:3840,comingSoon:true},
+{name:'FAST FOOD COLECAO CREC CREC',code:'304704',category:'Cozinha e Casinha',boxQty:72,stock:3311,comingSoon:true},
+{name:'FEIRINHA FRUTAS ORGANICAS COLECAO CREC CREC',code:'978675',category:'Cozinha e Casinha',boxQty:48,stock:2735,comingSoon:true},
+{name:'HORA DO CHAZINHO KIT 16PCS',code:'539721',category:'Cozinha e Casinha',boxQty:48,stock:1248,comingSoon:true},
+{name:'JOGO DE PANELAS INOX C/UTENSILIOS 14 PCS + LEGUMES',code:'303592',category:'Cozinha e Casinha',boxQty:48,stock:1335,comingSoon:true},
+{name:'JOGO DE PANELAS INOX COM UTENSILIOS 09 PECAS INFA',code:'303585',category:'Cozinha e Casinha',boxQty:24,stock:1043,comingSoon:true},
+{name:'KIT COZINHA COM ACESSORIOS ROSA 65X47CM',code:'310040',category:'Cozinha e Casinha',boxQty:4,stock:923,comingSoon:true},
+{name:'PENTEADEIRA INFANTIL COM ACESSORIOS 46PCS ROSA',code:'310347',category:'Moda e Beleza',boxQty:6,stock:1088,comingSoon:true},
+{name:'SKATE DE DEDO PROFISSIONAL 2PCS C/ACESSORIOS',code:'304896',category:'Jogos e Diversão',boxQty:48,stock:669,comingSoon:true},
+{name:'CUBO DIVERTIDO C/2 3X3X3 +2X2X2',code:'303011',category:'Jogos e Diversão',boxQty:36,stock:3484,comingSoon:true},
+{name:'CUBO DIVERTIDO PIRAMIDE PROFISSIONAL MOYU',code:'302984',category:'Jogos e Diversão',boxQty:60,stock:4553,comingSoon:true},
+{name:'CUBO DIVERTIDO PROFISSIONAL MOYO 2X2X2',code:'302991',category:'Jogos e Diversão',boxQty:60,stock:8400,comingSoon:true},
+{name:'CUBO MAGICO 5,5CM',code:'539745',category:'Jogos e Diversão',boxQty:96,stock:11076,comingSoon:true},
+{name:'IOIO LUMINOSO',code:'305855',category:'Jogos e Diversão',boxQty:120,stock:6360,comingSoon:true},
+{name:'SQUISHY COLOR BALL',code:'304575',category:'Jogos e Diversão',boxQty:48,stock:4152,comingSoon:true},
+{name:'SQUISHY PELUCIA',code:'304513',category:'Jogos e Diversão',boxQty:48,stock:3168,comingSoon:true},
+{name:'SQUISHY TURMINHA',code:'304667',category:'Jogos e Diversão',boxQty:72,stock:11520,comingSoon:true},
+{name:'YOYO COM LUZ',code:'305718',category:'Jogos e Diversão',boxQty:48,stock:2400,comingSoon:true},
+{name:'CRODODILO DENTISTA',code:'304483',category:'Diversos',boxQty:48,stock:4143,comingSoon:true},
+{name:'FUTEBOL HOCKEY MESA BRINQUEDO',code:'305404',category:'Esportes',boxQty:12,stock:1128,comingSoon:true},
+{name:'JOGO BASQUETE DE MESA',code:'305435',category:'Jogos e Diversão',boxQty:12,stock:2557,comingSoon:true},
+{name:'JOGO BASQUETE DE MESA 2 EM 1',code:'305428',category:'Jogos e Diversão',boxQty:12,stock:517,comingSoon:true},
+{name:'JOGO DA MEMORIA',code:'309969',category:'Jogos e Diversão',boxQty:36,stock:1669,comingSoon:true},
+{name:'JOGO DE ARREMESSO INFANTIL COM ALVO',code:'309938',category:'Jogos e Diversão',boxQty:12,stock:541,comingSoon:true},
+{name:'JOGO DE LETRAS COMBINADO DIVERSAO FAMILIA',code:'309839',category:'Jogos e Diversão',boxQty:24,stock:2196,comingSoon:true},
+{name:'JOGO DE MINI BASQUETE DUPLO DE MESA',code:'305374',category:'Jogos e Diversão',boxQty:48,stock:2007,comingSoon:true},
+{name:'JOGO DE PINBALL FOGUETE DOIS JOGADORES',code:'302069',category:'Jogos e Diversão',boxQty:24,stock:1099,comingSoon:true},
+{name:'JOGO DE TIRO COM AR PATO',code:'300775',category:'Jogos e Diversão',boxQty:12,stock:1955,comingSoon:true},
+{name:'JOGO INTERATIVO BATE E ACERTA C/ MARTELO',code:'309600',category:'Jogos e Diversão',boxQty:12,stock:960,comingSoon:true},
+{name:'JOGO LANCA DISCO',code:'309914',category:'Jogos e Diversão',boxQty:48,stock:1763,comingSoon:true},
+{name:'JOGO MACACO LOOPIN',code:'304360',category:'Jogos e Diversão',boxQty:72,stock:1944,comingSoon:true},
+{name:'JOGO MACACO NO GALHO',code:'977418',category:'Jogos e Diversão',boxQty:48,stock:2304,comingSoon:true},
+{name:'JOGO PUXA BATATINHAS FRITAS',code:'302076',category:'Jogos e Diversão',boxQty:48,stock:2579,comingSoon:true},
+{name:'JOGO QUEBRA MURO',code:'309921',category:'Jogos e Diversão',boxQty:48,stock:1152,comingSoon:true},
+{name:'JOGO RAQUETE PEGA BOLA',code:'309884',category:'Jogos e Diversão',boxQty:72,stock:2583,comingSoon:true},
+{name:'JOGO SAPINHO PEGA BOLINHAS 28PCS',code:'539684',category:'Jogos e Diversão',boxQty:36,stock:2160,comingSoon:true},
+{name:'JOGO STOP TRAVA LETRAS',code:'310422',category:'Jogos e Diversão',boxQty:24,stock:3000,comingSoon:true},
+{name:'MAQUINA PEGAR URSINHO INFANTIL',code:'309617',category:'Diversos',boxQty:12,stock:314,comingSoon:true},
+{name:'MAQUINA PEGAR URSINHO INFANTIL',code:'310194',category:'Diversos',boxQty:6,stock:276,comingSoon:true},
+{name:'MESA DE HOQUEI 51X31X9,5CM',code:'305350',category:'Jogos e Diversão',boxQty:6,stock:1846,comingSoon:true},
+{name:'MESA JOGO DE FUTEBOL INFANTIL GOL A GOL',code:'305411',category:'Jogos e Diversão',boxQty:24,stock:1049,comingSoon:true},
+{name:'MESA PEBOLIM PORTATIL 34X21X8CM',code:'305329',category:'Jogos e Diversão',boxQty:12,stock:2705,comingSoon:true},
+{name:'MESA PEBOLIM PORTATIL 51X31X9,5CM',code:'305336',category:'Jogos e Diversão',boxQty:6,stock:737,comingSoon:true},
+{name:'MESA PEBOLIM PORTATIL C/ PE 51X31X9, 5CM',code:'305343',category:'Jogos e Diversão',boxQty:4,stock:777,comingSoon:true},
+{name:'PIRATA MALUCO GRANDE',code:'304445',category:'Jogos e Diversão',boxQty:60,stock:3838,comingSoon:true},
+{name:'PISTA DE CARRINHOS E LAVA RAPIDO C/ 4 CARRINHOS',code:'303400',category:'Carrinhos e Veículos',boxQty:12,stock:714,comingSoon:true},
+{name:'PULA PIRATA MEDIO',code:'977395',category:'Jogos e Diversão',boxQty:60,stock:6600,comingSoon:true},
+{name:'TABULEIRO LETRAS ALFABETO DE MADEIRA',code:'309709',category:'Jogos e Diversão',boxQty:36,stock:2801,comingSoon:true},
+{name:'TIRO AO GOL',code:'305381',category:'Diversos',boxQty:48,stock:1527,comingSoon:true},
+{name:'BEYBLADE PIAO COM LANCADOR E ARENA',code:'978828',category:'Jogos e Diversão',boxQty:48,stock:2580,comingSoon:true},
+{name:'DISCO VOADOR SPINNER C/LANCADOR',code:'304889',category:'Diversos',boxQty:48,stock:5184,comingSoon:true},
+{name:'KIT POLICIA DE ELITE',code:'422428',category:'Militar e Ação',boxQty:48,stock:2928,comingSoon:true},
+{name:'LANCA DARDOS DE PULSO',code:'300782',category:'Armas de Brinquedo',boxQty:24,stock:475,comingSoon:true},
+{name:'LANCA DARDOS RAVIL C/REFIL',code:'305039',category:'Armas de Brinquedo',boxQty:18,stock:432,comingSoon:true},
+{name:'LANCADOR DE BOLAS COM ALVO DINOSSAURO',code:'300799',category:'Dinossauros',boxQty:12,stock:1157,comingSoon:true},
+{name:'LANCADOR DE BOLAS DINOSSAURO',code:'N00805',category:'Dinossauros',boxQty:24,stock:2393,comingSoon:true},
+{name:'LANCADOR DE CARRINHO DINO',code:'310415',category:'Dinossauros',boxQty:24,stock:4673,comingSoon:true},
+{name:'PIAO COM LUZ BOLA',code:'310033',category:'Jogos e Diversão',boxQty:120,stock:8753,comingSoon:true},
+{name:'PISTOLA LANCA AVIAO PLANADOR',code:'304728',category:'Carrinhos e Veículos',boxQty:48,stock:3792,comingSoon:true},
+{name:'PISTOLA LANCA BOLAS',code:'978590',category:'Armas de Brinquedo',boxQty:36,stock:108,comingSoon:true},
+{name:'PISTOLA LANCADORA DE DARDOS',code:'649963',category:'Armas de Brinquedo',boxQty:48,stock:1437,comingSoon:true},
+{name:'RIFLE LANCADOR COM MIRA 6 DARDOS ESPUMA',code:'422336',category:'Armas de Brinquedo',boxQty:48,stock:240,comingSoon:true},
+{name:'SUPER LANCA AGUA 48.5CM',code:'579680',category:'Bolhas e Água',boxQty:18,stock:1254,comingSoon:true},
+{name:'SUPER LANCA AGUA DRAGAO 36CM',code:'304933',category:'Bolhas e Água',boxQty:36,stock:576,comingSoon:true},
+{name:'SUPER LANCA AGUA II 40CM',code:'579734',category:'Bolhas e Água',boxQty:36,stock:3492,comingSoon:true},
+{name:'MANIA DE BIJU 5',code:'304827',category:'Moda e Beleza',boxQty:48,stock:48,comingSoon:true},
+{name:'MANIA DE BIJU 6',code:'304834',category:'Moda e Beleza',boxQty:96,stock:1680,comingSoon:true},
+{name:'MANIA DE BIJU E TRANCAS',code:'307095',category:'Moda e Beleza',boxQty:12,stock:1200,comingSoon:true},
+{name:'MANIA DE BIJU PARA TRANCAS',code:'307101',category:'Moda e Beleza',boxQty:12,stock:2381,comingSoon:true},
+{name:'STRASS BRILHO COM APLICADOR P/ CABELO',code:'307118',category:'Moda e Beleza',boxQty:12,stock:2031,comingSoon:true},
+{name:'KIT MASSINHA BRINCANDO E APRENDENDO',code:'422657',category:'Massinha de Modelar',boxQty:36,stock:2808,comingSoon:true},
+{name:'MAQUINA DE SORVETE INFANTIL MASSINHA',code:'300867',category:'Massinha de Modelar',boxQty:12,stock:1840,comingSoon:true},
+{name:'GUITARRA COM MICROFONE COM PEDESTAL INFANTIL',code:'306647',category:'Instrumentos e Sons',boxQty:12,stock:1186,comingSoon:true},
+{name:'KIT MICROFONE E OCULOS INFANTIL C/LUZ E SOM',code:'650211',category:'Instrumentos e Sons',boxQty:48,stock:5610,comingSoon:true},
+{name:'PIANO MUSICAL INFANTIL',code:'657371',category:'Instrumentos e Sons',boxQty:24,stock:3475,comingSoon:true},
+{name:'RADIO AMPLIFICADOR COM MICROFONE LUZ E SOM',code:'310378',category:'Instrumentos e Sons',boxQty:24,stock:3567,comingSoon:true},
+{name:'TECLADO ELETRONICO DE ANIMAIS',code:'306791',category:'Instrumentos e Sons',boxQty:48,stock:2536,comingSoon:true},
+{name:'TECLADO ELETRONICO INFANTIL DE 22 TECLAS COM SONS',code:'306814',category:'Instrumentos e Sons',boxQty:12,stock:1174,comingSoon:true},
+{name:'TECLADO ELETRONICO PRETO',code:'309785',category:'Instrumentos e Sons',boxQty:36,stock:180,comingSoon:true},
+{name:'TECLADO ELETRONICO ROSA',code:'309761',category:'Instrumentos e Sons',boxQty:36,stock:893,comingSoon:true},
+{name:'CAMINHAO DINOSSAUROS PISTA C/ CARRINHO',code:'303448',category:'Dinossauros',boxQty:10,stock:1200,comingSoon:true},
+{name:'CAMINHAO SUPER PISTA TRANSPORTADOR PECAS 40X20CM',code:'310026',category:'Carrinhos e Veículos',boxQty:24,stock:1752,comingSoon:true},
+{name:'CARRO TIRANOSSAURO-REX RAMPA C/ CARRINHOS',code:'303394',category:'Dinossauros',boxQty:24,stock:401,comingSoon:true},
+{name:'CITY TREM COM TRILHOS E VAGOES',code:'579529',category:'Carrinhos e Veículos',boxQty:48,stock:4944,comingSoon:true},
+{name:'PISTA CARRINHOS DINOSSAURO LUMINOSO LOOPING 109 PC',code:'301574',category:'Dinossauros',boxQty:12,stock:902,comingSoon:true},
+{name:'PISTA CARRINHOS DINOSSAURO LUMINOSO LOOPING 245 PC',code:'301567',category:'Dinossauros',boxQty:6,stock:2139,comingSoon:true},
+{name:'PISTA DE CARRINHOS ESTACIONAMENTO COM 03 RAMPAS',code:'301581',category:'Carrinhos e Veículos',boxQty:12,stock:39,comingSoon:true},
+{name:'PISTA ELETRICA CIRCUITO C/ 5 CARROS',code:'301543',category:'Carrinhos e Veículos',boxQty:12,stock:1167,comingSoon:true},
+{name:'PISTA ELETRICA CIRCUITO RACING',code:'301550',category:'Carrinhos e Veículos',boxQty:12,stock:2261,comingSoon:true},
+{name:'PISTA LANCA CARRINHOS DINOSSAURO LOOPING',code:'309822',category:'Dinossauros',boxQty:12,stock:1326,comingSoon:true},
+{name:'PISTA LOOPING 360 STRIKE',code:'579383',category:'Carrinhos e Veículos',boxQty:48,stock:1536,comingSoon:true},
+{name:'AVIAO 380',code:'657319',category:'Carrinhos e Veículos',boxQty:48,stock:48,comingSoon:true},
+{name:'AVIAO PLANADOR',code:'304414',category:'Carrinhos e Veículos',boxQty:48,stock:3408,comingSoon:true},
+{name:'CARRO ESTILO RACING C/ SOM 26CM',code:'308153',category:'Carrinhos e Veículos',boxQty:24,stock:2376,comingSoon:true},
+{name:'CARRO ESTILO RACING C/ SOM 28CM',code:'308160',category:'Carrinhos e Veículos',boxQty:12,stock:1517,comingSoon:true},
+{name:'COLECAO CARRO CORRIDA 3PCS',code:'557190',category:'Carrinhos e Veículos',boxQty:48,stock:6432,comingSoon:true},
+{name:'COLECAO MOTO 4PCS',code:'557206',category:'Carrinhos e Veículos',boxQty:96,stock:3120,comingSoon:true},
+{name:'KIT RACING CAR',code:'657487',category:'Diversos',boxQty:48,stock:2829,comingSoon:true},
+{name:'MINI CARROS COLECAO 5PCS',code:'556582',category:'Carrinhos e Veículos',boxQty:48,stock:4518,comingSoon:true},
+{name:'MONSTER TRUCKS',code:'304940',category:'Carrinhos e Veículos',boxQty:12,stock:2363,comingSoon:true},
+{name:'MONSTER TRUCKS BIGS 50CM',code:'304964',category:'Carrinhos e Veículos',boxQty:12,stock:2338,comingSoon:true},
+{name:'TREM BALA ELETRICO',code:'301536',category:'Carrinhos e Veículos',boxQty:12,stock:462,comingSoon:true}
+];
+const productsBestway = [
+{name:'Boia Circular 51cm Best',code:'BST-003',category:'Piscina e Praia',boxQty:36,multiplos:12,ipi:'6,5',priceOriginal:'R$ 10,50',priceFinal:'R$ 11,18',ean:'7896980447606',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular Anima Estamp. Sortida',code:'BST-103',category:'Piscina e Praia',boxQty:36,multiplos:12,ipi:'6,5',priceOriginal:'R$ 16,50',priceFinal:'R$ 17,57',ean:'7896673195562',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular Doce Donut 16cm',code:'BST-104',category:'Piscina e Praia',boxQty:12,multiplos:12,ipi:'6,5',priceOriginal:'R$ 31,00',priceFinal:'R$ 33,02',ean:'7896673195500',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular Donut 107cm Best',code:'BST-017',category:'Piscina e Praia',boxQty:12,multiplos:6,ipi:'6,5',priceOriginal:'R$ 42,00',priceFinal:'R$ 44,73',ean:'7896980447675',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular Pequenos Amigos',code:'BST-107',category:'Piscina e Praia',boxQty:24,multiplos:1,ipi:'6,5',priceOriginal:'R$ 19,90',priceFinal:'R$ 21,19',ean:'7896673127082',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular Pneu 1,19cm',code:'BST-041',category:'Piscina e Praia',boxQty:12,multiplos:6,ipi:'6,5',priceOriginal:'R$ 57,00',priceFinal:'R$ 60,71',ean:'7896980446692',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular Pneu 91cm',code:'BST-042',category:'Piscina e Praia',boxQty:12,multiplos:12,ipi:'6,5',priceOriginal:'R$ 21,90',priceFinal:'R$ 23,32',ean:'7896980446708',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Divertida Flamingo 1,2x1,2m',code:'BST-049',category:'Piscina e Praia',boxQty:8,multiplos:4,ipi:'6,5',priceOriginal:'R$ 135,00',priceFinal:'R$ 143,78',ean:'7896980446784',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Divertida Unicórnio 1,5x1,1m',code:'BST-050',category:'Piscina e Praia',boxQty:8,multiplos:4,ipi:'6,5',priceOriginal:'R$ 115,00',priceFinal:'R$ 122,48',ean:'7896980446791',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Bote Infantil Anima 76x55cm',code:'BST-102',category:'Piscina e Praia',boxQty:24,multiplos:6,ipi:'6,5',priceOriginal:'R$ 47,00',priceFinal:'R$ 50,06',ean:'7896673195593',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Bote Infantil Cuidado Bebê 80x85cm',code:'BST-033',category:'Piscina e Praia',boxQty:24,multiplos:6,ipi:'6,5',priceOriginal:'R$ 59,00',priceFinal:'R$ 62,84',ean:'7896980447217',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Bote Infantil Marinhos 102x69cm',code:'BST-031',category:'Piscina e Praia',boxQty:12,multiplos:6,ipi:'6,5',priceOriginal:'R$ 45,00',priceFinal:'R$ 47,93',ean:'7896980447255',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Colchão Bronzeador 170cm',code:'BST-060',category:'Piscina e Praia',boxQty:12,multiplos:6,ipi:'9,75',priceOriginal:'R$ 39,90',priceFinal:'R$ 43,79',ean:'7896980446906',ncm:'39269090',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Colete Infantil Fundo do Mar 40cm',code:'BQI-01',category:'Piscina e Praia',boxQty:120,multiplos:12,ipi:'6,5',priceOriginal:'R$ 15,50',priceFinal:'R$ 16,51',ean:'7908434918034',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Colete Infantil Fundo do Mar 50cm',code:'BQI-02',category:'Piscina e Praia',boxQty:100,multiplos:10,ipi:'6,5',priceOriginal:'R$ 17,50',priceFinal:'R$ 18,64',ean:'7908434918041',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Máscara de Mergulho Infantil',code:'BST-067',category:'Piscina e Praia',boxQty:24,multiplos:12,ipi:'13',priceOriginal:'R$ 25,50',priceFinal:'R$ 28,82',ean:'7896980446975',ncm:'95062900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Óculos de Natação Infantil Cores Best',code:'BST-020',category:'Piscina e Praia',boxQty:24,multiplos:12,ipi:'3,25',priceOriginal:'R$ 10,90',priceFinal:'R$ 11,25',ean:'7896980447705',ncm:'90049090',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 2 Anéis 21L',code:'BST-072',category:'Piscina e Praia',boxQty:12,multiplos:12,ipi:'13',priceOriginal:'R$ 23,00',priceFinal:'R$ 25,99',ean:'7896980447026',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 3 Níveis 43L',code:'BST-073',category:'Piscina e Praia',boxQty:12,multiplos:6,ipi:'13',priceOriginal:'R$ 35,00',priceFinal:'R$ 39,55',ean:'7896980447033',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 4 Gomos 522L',code:'BST-080',category:'Piscina e Praia',boxQty:6,multiplos:6,ipi:'13',priceOriginal:'R$ 125,00',priceFinal:'R$ 141,25',ean:'7896980447101',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 480L 183x33cm',code:'BST-079',category:'Piscina e Praia',boxQty:6,multiplos:6,ipi:'13',priceOriginal:'R$ 145,00',priceFinal:'R$ 163,85',ean:'7896980447095',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável Safari 140L',code:'BST-074',category:'Piscina e Praia',boxQty:6,multiplos:6,ipi:'13',priceOriginal:'R$ 65,00',priceFinal:'R$ 73,45',ean:'7896980447040',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Semirrígida Peixe 2074L',code:'BST-091',category:'Piscina e Praia',boxQty:4,multiplos:4,ipi:'13',priceOriginal:'R$ 249,00',priceFinal:'R$ 281,37',ean:'7896980447392',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Teimoso Animais Divertido 89cm',code:'BST-093',category:'Piscina e Praia',boxQty:24,multiplos:12,ipi:'6,5',priceOriginal:'R$ 32,00',priceFinal:'R$ 34,08',ean:'7896980447415',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Touca de Natação Glide 3 Cores',code:'BST-071',category:'Piscina e Praia',boxQty:36,multiplos:12,ipi:'0',priceOriginal:'R$ 17,90',priceFinal:'R$ 17,90',ean:'7896980447019',ncm:'65069100',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 3 Anéis 101L',code:'BST-081',category:'Piscina e Praia',boxQty:12,multiplos:6,ipi:'13',priceOriginal:'R$ 45,00',priceFinal:'R$ 50,85',ean:'7896980447118',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 3 Anéis 140L',code:'BST-082',category:'Piscina e Praia',boxQty:6,multiplos:6,ipi:'13',priceOriginal:'R$ 55,00',priceFinal:'R$ 62,15',ean:'7896980447125',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 3 Anéis 282L',code:'BST-083',category:'Piscina e Praia',boxQty:6,multiplos:6,ipi:'13',priceOriginal:'R$ 75,00',priceFinal:'R$ 84,75',ean:'7896980447132',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 3 Anéis 480L',code:'BST-084',category:'Piscina e Praia',boxQty:6,multiplos:6,ipi:'13',priceOriginal:'R$ 110,00',priceFinal:'R$ 124,30',ean:'7896980447149',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Semirrígida Fun 435L',code:'BST-089',category:'Piscina e Praia',boxQty:6,multiplos:6,ipi:'13',priceOriginal:'R$ 95,00',priceFinal:'R$ 107,35',ean:'7896980447361',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular Ocean World 60cm',code:'WST-003',category:'Piscina e Praia',boxQty:36,multiplos:12,ipi:'6,5',priceOriginal:'R$ 9,90',priceFinal:'R$ 10,54',ean:'7896673108968',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular 50cm',code:'WST-001',category:'Piscina e Praia',boxQty:36,multiplos:12,ipi:'6,5',priceOriginal:'R$ 7,90',priceFinal:'R$ 8,41',ean:'7896673178855',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Boia Circular 60cm',code:'WST-002',category:'Piscina e Praia',boxQty:36,multiplos:12,ipi:'6,5',priceOriginal:'R$ 9,50',priceFinal:'R$ 10,12',ean:'7896673189882',ncm:'95030099',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 1400L',code:'WST-011',category:'Piscina e Praia',boxQty:1,multiplos:1,ipi:'13',priceOriginal:'R$ 199,00',priceFinal:'R$ 224,87',ean:'7896673159199',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'},
+{name:'Piscina Inflável 165L',code:'WST-007',category:'Piscina e Praia',boxQty:12,multiplos:6,ipi:'13',priceOriginal:'R$ 59,00',priceFinal:'R$ 66,67',ean:'7896673118547',ncm:'95069900',disponibilidade:'IMEDIATO',priceType:'ipi'}
+];
+
+productsNovidades.forEach(p => p.source = 'novidades');
+productsBuppy.forEach(p => p.source = 'buppy');
+productsAPS.forEach(p => p.source = 'aps');
+productsBestway.forEach(p => p.source = 'bestway');
+
+const ALL_PRODUCTS = [...productsNovidades, ...productsBuppy, ...productsAPS, ...productsBestway];
+
+function categoriesFor(brand){
+  const list = brand === 'todas' ? ALL_PRODUCTS : ALL_PRODUCTS.filter(p => p.source === brand);
+  return [...new Set(list.map(p => p.category))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+}
+
+/* ============ STATE ============ */
+let state = { brand:'todas', category:'Todas', search:'', hideSoon:false, visibleCount:48 };
+const PAGE_SIZE = 48;
+
+/* ============ RENDER: brand tabs ============ */
+const brandTabsWrap = document.getElementById('brandTabs');
+function renderBrandTabs(){
+  const tabs = [
+    {id:'todas', label:'Todas as marcas'},
+    {id:'novidades', label:'New Goods (preço)'},
+    {id:'buppy', label:'BuppyPet (estoque)'},
+    {id:'aps', label:'APS Toys&Toys (estoque)'},
+    {id:'bestway', label:'Bestway/Westwave (preço)'}
+  ];
+  brandTabsWrap.innerHTML = tabs.map(t =>
+    `<button class="brand-tab ${t.id===state.brand?'active':''}" data-brand="${t.id}">${t.label}</button>`
+  ).join('');
+  brandTabsWrap.querySelectorAll('.brand-tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      state.brand = btn.dataset.brand;
+      state.category = 'Todas';
+      state.visibleCount = PAGE_SIZE;
+      renderBrandTabs();
+      renderChips();
+      renderGrid();
+    });
+  });
+}
+
+/* ============ RENDER: category chips ============ */
+const chipsWrap = document.getElementById('categoryChips');
+function renderChips(){
+  const cats = ['Todas', ...categoriesFor(state.brand)];
+  chipsWrap.innerHTML = cats.map(c =>
+    `<button class="chip ${c===state.category ? 'active':''}" data-cat="${c}">${c}</button>`
+  ).join('');
+  chipsWrap.querySelectorAll('.chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      state.category = btn.dataset.cat;
+      state.visibleCount = PAGE_SIZE;
+      renderChips();
+      renderGrid();
+    });
+  });
+}
+
+/* ============ RENDER: grid ============ */
+const grid = document.getElementById('grid');
+const resultCount = document.getElementById('resultCount');
+const clearBtn = document.getElementById('clearBtn');
+const loadMoreWrap = document.getElementById('loadMoreWrap');
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+const totalCountChip = document.getElementById('totalCountChip');
+totalCountChip.textContent = ALL_PRODUCTS.length + ' itens no catálogo';
+
+function normalize(s){
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+
+function getFiltered(){
+  let list = state.brand === 'todas' ? ALL_PRODUCTS : ALL_PRODUCTS.filter(p => p.source === state.brand);
+  if(state.category !== 'Todas') list = list.filter(p => p.category === state.category);
+  if(state.hideSoon) list = list.filter(p => !p.comingSoon);
+  if(state.search){
+    const q = normalize(state.search);
+    list = list.filter(p => normalize(p.name).includes(q) || normalize(p.code).includes(q));
+  }
+  return list;
+}
+
+function renderGrid(){
+  const list = getFiltered();
+  const visible = list.slice(0, state.visibleCount);
+  resultCount.innerHTML = `<b>${list.length}</b> produtos encontrados`;
+  clearBtn.style.display = (state.search || state.category !== 'Todas' || state.brand !== 'todas' || state.hideSoon) ? 'inline-block' : 'none';
+
+  if(list.length === 0){
+    grid.innerHTML = `
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        <h3>Nenhum produto encontrado</h3>
+        <p>Tente outro termo de busca, marca ou categoria.</p>
+        <button id="emptyClearBtn">Limpar filtros</button>
+      </div>`;
+    document.getElementById('emptyClearBtn').addEventListener('click', clearFilters);
+    loadMoreWrap.style.display = 'none';
+    return;
+  }
+
+  grid.innerHTML = visible.map(p => cardTemplate(p)).join('');
+  grid.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click', ()=> openModal(card.dataset.source, card.dataset.code, card.dataset.idx));
+    card.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); card.click(); }});
+  });
+
+  loadMoreWrap.style.display = list.length > state.visibleCount ? 'block' : 'none';
+}
+
+function cardTemplate(p){
+  const icon = ICONS[p.category] || DEFAULT_ICON;
+  const idx = ALL_PRODUCTS.indexOf(p);
+  let priceBlock, badge;
+  if(p.priceType === 'ipi'){
+    priceBlock = `
+      <div class="card-price-ipi">
+        <span class="price-original">Lista ${p.priceOriginal}</span>
+        <span class="price-final">${p.priceFinal}</span>
+        <span class="price-note">preço + IPI (${p.ipi}%), un.</span>
+      </div>`;
+    badge = `<div class="ipi-badge">IPI ${p.ipi}%</div>`;
+  } else if(p.priceFinal){
+    priceBlock = `
+      <div class="card-price">
+        <span class="price-original">${p.priceOriginal}</span>
+        <span class="price-final">${p.priceFinal}</span>
+        <span class="price-note">preço/unid., caixa fechada</span>
+      </div>`;
+    badge = '<div class="discount-badge">-35%</div>';
+  } else {
+    priceBlock = `
+      <div class="card-stock">
+        <span class="stock-num">${p.stock}</span>
+        <span class="stock-note">${p.comingSoon ? 'estoque previsto' : 'em estoque'} · cx c/ ${p.boxQty} un</span>
+        ${p.futureStock ? `<span class="stock-future">+${p.futureStock} em breve</span>` : ''}
+      </div>`;
+    badge = p.comingSoon ? '<div class="soon-badge">EM BREVE</div>' : '';
+  }
+  return `
+    <div class="card brand-${p.source}" tabindex="0" role="button" aria-label="Ver detalhes de ${p.name}" data-source="${p.source}" data-code="${p.code}" data-idx="${idx}">
+      <div class="tag-hole"></div>
+      <span class="brand-flag brand-${p.source}">${BRAND_LABELS[p.source]}</span>
+      ${badge}
+      <div class="icon-badge">${icon}</div>
+      <div class="card-cat">${p.category}</div>
+      <div class="card-name">${p.name}</div>
+      <div class="card-ref mono">Código: ${p.code}</div>
+      <div class="card-specs">
+        <span>Cx: ${p.boxQty} un</span>
+        ${p.dims ? `<span>${p.dims}</span>` : ''}
+      </div>
+      ${priceBlock}
+    </div>`;
+}
+
+/* ============ MODAL ============ */
+const overlay = document.getElementById('overlay');
+const modalContent = document.getElementById('modalContent');
+
+function openModal(source, code, idx){
+  const p = ALL_PRODUCTS[idx] || ALL_PRODUCTS.find(x=>x.source===source && x.code===code);
+  if(!p) return;
+  const icon = ICONS[p.category] || DEFAULT_ICON;
+  modalContent.className = 'modal brand-' + p.source;
+
+  let priceBlock;
+  if(p.priceType === 'ipi'){
+    priceBlock = `
+    <div class="modal-price-ipi-block">
+      <div class="ipi-badge">IPI ${p.ipi}%</div>
+      <span class="price-original">Preço lista: ${p.priceOriginal}</span>
+      <span class="price-final">${p.priceFinal}</span>
+      <span class="price-note">preço unitário já com IPI incluso</span>
+    </div>`;
+  } else if(p.priceFinal){
+    priceBlock = `
+    <div class="modal-price-block">
+      <div class="discount-badge">-35%</div>
+      <span class="price-original">De ${p.priceOriginal}</span>
+      <span class="price-final">${p.priceFinal}</span>
+      <span class="price-note">preço unitário com 35% OFF aplicado</span>
+    </div>`;
+  } else {
+    priceBlock = `
+    <div class="modal-stock-block">
+      <span class="stock-num">${p.stock}</span>
+      <span class="stock-note">${p.comingSoon ? 'unidades previstas (estoque futuro)' : 'unidades em estoque'}</span>
+      ${p.futureStock ? `<span class="stock-future">+${p.futureStock} unidades chegando em breve</span>` : ''}
+    </div>`;
+  }
+
+  const specs = [`<div class="spec-item"><div class="spec-label">Peças por caixa</div><div class="spec-value">${p.boxQty} un</div></div>`];
+  if(p.dims) specs.push(`<div class="spec-item"><div class="spec-label">Dimensões</div><div class="spec-value">${p.dims}</div></div>`);
+  if(p.multiplos) specs.push(`<div class="spec-item"><div class="spec-label">Múltiplos de venda</div><div class="spec-value">${p.multiplos} un</div></div>`);
+  if(p.ean) specs.push(`<div class="spec-item"><div class="spec-label">EAN</div><div class="spec-value">${p.ean}</div></div>`);
+  if(p.ncm) specs.push(`<div class="spec-item"><div class="spec-label">NCM</div><div class="spec-value">${p.ncm}</div></div>`);
+  if(p.disponibilidade) specs.push(`<div class="spec-item"><div class="spec-label">Disponibilidade</div><div class="spec-value">${p.disponibilidade}</div></div>`);
+
+  const noteBySource = {
+    novidades: 'Venda realizada em caixa fechada (PÇ/CX). Dados extraídos do catálogo "Novidades Brinquedos" (New Goods), atualizado em 23/07/2026.',
+    buppy: 'Estoque e caixa conforme catálogo "BuppyPet", atualizado em 20/07/2026.',
+    aps: 'Estoque e caixa conforme catálogo "APS Toys&Toys", atualizado em 20/07/2026.',
+    bestway: 'Preços e estoque conforme catálogo "Disponível — Bestway e Westwave", atualizado em 13/07/2026.'
+  };
+
+  modalContent.innerHTML = `
+    <div class="tag-hole"></div>
+    <button class="modal-close" id="modalCloseBtn" aria-label="Fechar">✕</button>
+    <div class="icon-badge">${icon}</div>
+    <div class="modal-brand">${BRAND_LABELS[p.source]}</div>
+    <div class="modal-cat">${p.category}</div>
+    <h2 class="modal-name">${p.name}</h2>
+    <div class="modal-ref mono">Código de referência: ${p.code}</div>
+    ${priceBlock}
+    <div class="modal-specs">${specs.join('')}</div>
+    <div class="modal-note">Imagem meramente ilustrativa da categoria do produto — fotos reais não estavam disponíveis para extração deste catálogo. ${noteBySource[p.source]}</div>
+  `;
+  overlay.classList.add('open');
+  document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+  document.body.style.overflow = 'hidden';
+  modalContent.focus();
+}
+
+function closeModal(){
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+
+/* ============ SEARCH / TOGGLE ============ */
+document.getElementById('searchInput').addEventListener('input', (e)=>{
+  state.search = e.target.value;
+  state.visibleCount = PAGE_SIZE;
+  renderGrid();
+});
+document.getElementById('hideSoonToggle').addEventListener('change', (e)=>{
+  state.hideSoon = e.target.checked;
+  state.visibleCount = PAGE_SIZE;
+  renderGrid();
+});
+
+/* ============ LOAD MORE ============ */
+loadMoreBtn.addEventListener('click', ()=>{
+  state.visibleCount += PAGE_SIZE;
+  renderGrid();
+});
+
+/* ============ CLEAR ============ */
+function clearFilters(){
+  state = { brand:'todas', category:'Todas', search:'', hideSoon:false, visibleCount:PAGE_SIZE };
+  document.getElementById('searchInput').value = '';
+  document.getElementById('hideSoonToggle').checked = false;
+  renderBrandTabs();
+  renderChips();
+  renderGrid();
+}
+clearBtn.addEventListener('click', clearFilters);
+
+/* ============ INIT ============ */
+renderBrandTabs();
+renderChips();
+renderGrid();
+</script>
+</body>
+</html>
